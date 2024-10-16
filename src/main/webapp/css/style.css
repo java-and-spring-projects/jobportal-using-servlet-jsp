@@ -14,15 +14,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
-.content {
-      flex: 1;
-      padding: 20px;
-      margin-top: 20px;
-      background: #ffffff;
-      border: 1px solid #dddddd;
-      border-radius: 5px;
-      margin-bottom: 20px;
-}
+
 
 
 
@@ -125,6 +117,15 @@ footer {
     margin: auto;
     overflow: hidden;
 }
+.candidate-dashboard1 .content {
+      flex: 1;
+      padding: 20px;
+      margin-top: 20px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+}
 
 
 .candidate-dashboard1 .content button{
@@ -186,7 +187,15 @@ footer {
     margin: auto;
     overflow: hidden;
 }
-
+.candidate-dashboard2 .content {
+      flex: 1;
+      padding: 20px;
+      margin-top: 20px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+}
 
 .candidate-dashboard2 .content button{
     background: #35424a;
@@ -277,4 +286,63 @@ footer {
     cursor: pointer;
     margin-left: 10px;
     border-radius: 5px;
+}
+
+
+
+
+
+
+/*** Register Page ***/
+#register {
+    width: 45%;
+    margin: 30px auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding:40px 100px;
+}
+
+#register .heading{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+#register form{
+    padding-top: 30px;
+}
+
+#register input[type='submit']{
+    width: 100%;
+}
+#register input[type='submit']+span{
+    margin-bottom: 40px;
+    display: block;
+}
+
+
+
+
+
+
+/* Login Page */
+#login {
+    width: 40%;
+    margin: 206px auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+    padding:40px 100px;
+}
+
+#login .heading{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+#login form{
+    padding-top: 30px;
+}
+
+#login input[type='submit']{
+    width: 100%;
+    margin-top: 20px;
 }
