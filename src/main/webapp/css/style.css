@@ -8,6 +8,22 @@
 a{
     text-decoration: none;
 }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.content {
+      flex: 1;
+      padding: 20px;
+      margin-top: 20px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+}
+
 
 
 
@@ -58,7 +74,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: red;
 }
 
@@ -98,3 +114,59 @@ footer {
 }
 
 
+
+/* candidate dashboard before login*/
+ .candidate-dashboard1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.candidate-dashboard1 .content button{
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.candidate-dashboard1 .content button:hover{
+    background: #2c3e50;
+}
+.candidate-dashboard1 input[type="text"], select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    width: 90%;
+}
+.candidate-dashboard1 .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between job cards */
+    margin-top: 40px;
+}
+.candidate-dashboard1 .job-card {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    height: 180px;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.candidate-dashboard1 .job-card:hover {
+    transform: scale(1.02);
+}
+.candidate-dashboard1 .job-card h3{
+    padding: 10px;
+}
+.candidate-dashboard1 .job-card p{
+    padding: 10px;
+}
