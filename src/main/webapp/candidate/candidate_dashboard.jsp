@@ -15,7 +15,8 @@
     <%@ include file="../components/navbar.jsp"%>
 
     <div class="container candidate-dashboard2">
-         <div class="profile">
+        <div class="content">
+
             <section id="profile">
                 <h2>User Profile</h2>
                 <div class="profile-card">
@@ -27,12 +28,11 @@
                         <p>Skills: JavaScript, Python, React</p>
                     </div>
                     <button>Edit Profile</button>
-                    <button>Logout</button>
+                    <a href="${pageContext.request.contextPath}/logout">Logout</a>
                 </div>
             </section>
-        </div>
 
-        <div class="content">
+
             <section id="job-listings">
                 <div>
                     <label for="job-type">Filter by Job Type:</label>
@@ -73,14 +73,6 @@
         function applyForJob(jobTitle) {
             if (confirm(`Are you sure you want to apply for ${jobTitle}?`)) {
                 alert('Application submitted!');
-            }
-        }
-
-        function logout() {
-            if (confirm('Are you sure you want to log out?')) {
-                alert('You have been logged out.');
-                // Redirect to login page or perform logout action
-                window.location.href = 'login.html'; // Change to your login page
             }
         }
     </script>

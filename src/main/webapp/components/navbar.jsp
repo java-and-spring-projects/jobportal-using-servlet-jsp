@@ -13,6 +13,7 @@
                     <li><a href="#applications">My Applications</a></li>
                     <li><a href="#messages">Messages</a></li>
                 </ul>
+
             </c:when>
             <c:otherwise>
                 <ul>

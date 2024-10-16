@@ -90,6 +90,9 @@ footer {
     flex-direction: column;
     align-items: center;
 }
+.footer-content p{
+    color: #ffffff;
+}
 
 .footer-links {
     margin-top: 10px;
@@ -100,6 +103,7 @@ footer {
     text-decoration: none;
     margin: 0 10px;
 }
+
 
 .footer-links a:hover {
     text-decoration: underline;
@@ -180,21 +184,35 @@ footer {
 
 
 /* candidate dashboard after login*/
- .candidate-dashboard2 {
+ .candidate-dashboard2 .content {
     display: flex;
+    gap: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin: 20px auto;
     flex-wrap: wrap;
+    padding: 20px;
     width: 80%;
-    margin: auto;
     overflow: hidden;
 }
-.candidate-dashboard2 .content {
-      flex: 1;
-      padding: 20px;
-      margin-top: 20px;
-      background: #ffffff;
-      border: 1px solid #dddddd;
-      border-radius: 5px;
-      margin-bottom: 20px;
+#profile{
+    width: 25%;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+#job-listings{
+    width: 72%;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
 .candidate-dashboard2 .content button{
@@ -287,6 +305,17 @@ footer {
     margin-left: 10px;
     border-radius: 5px;
 }
+.candidate-dashboard2 .content .job-listings{
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 
 
