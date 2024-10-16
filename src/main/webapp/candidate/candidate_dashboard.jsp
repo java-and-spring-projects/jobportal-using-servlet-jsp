@@ -8,13 +8,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal User Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
     <%@ include file="../components/navbar.jsp"%>
 
-    <div class="container candidate-dashboard1">
+    <div class="container candidate-dashboard2">
+         <div class="profile">
+            <section id="profile">
+                <h2>User Profile</h2>
+                <div class="profile-card">
+                    <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar">
+                    <div class="profile-info">
+                        <h3>John Doe</h3>
+                        <p>Email: john.doe@example.com</p>
+                        <p>Location: New York, NY</p>
+                        <p>Skills: JavaScript, Python, React</p>
+                    </div>
+                    <button>Edit Profile</button>
+                    <button>Logout</button>
+                </div>
+            </section>
+        </div>
+
         <div class="content">
             <section id="job-listings">
                 <div>

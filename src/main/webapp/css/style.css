@@ -115,6 +115,8 @@ footer {
 
 
 
+
+
 /* candidate dashboard before login*/
  .candidate-dashboard1 {
     display: flex;
@@ -154,7 +156,7 @@ footer {
     border: 1px solid #dddddd;
     border-radius: 5px;
     padding: 20px;
-    height: 180px;
+    height: 170px;
     width: 100%;
     background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -169,4 +171,110 @@ footer {
 }
 .candidate-dashboard1 .job-card p{
     padding: 10px;
+}
+
+
+
+
+
+
+/* candidate dashboard after login*/
+ .candidate-dashboard2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.candidate-dashboard2 .content button{
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.candidate-dashboard2 .content button:hover{
+    background: #2c3e50;
+}
+.candidate-dashboard2 input[type="text"], select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    width: 90%;
+}
+.candidate-dashboard2 .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between job cards */
+    margin-top: 40px;
+}
+.candidate-dashboard2 .job-card {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    height: 170px;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.candidate-dashboard2 .job-card:hover {
+    transform: scale(1.02);
+}
+.candidate-dashboard2 .job-card h3{
+    padding: 10px;
+}
+.candidate-dashboard2 .job-card p{
+    padding: 10px;
+}
+
+.candidate-dashboard2 .profile {
+    width: 25%;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.candidate-dashboard2 .profile-card {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.candidate-dashboard2 .avatar {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #35424a;
+    width: 100px;
+    height: 100px;
+}
+
+.candidate-dashboard2 .profile-info h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #35424a;
+}
+
+.candidate-dashboard2 .profile-info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+.candidate-dashboard2 .profile .profile-card button{
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
 }
