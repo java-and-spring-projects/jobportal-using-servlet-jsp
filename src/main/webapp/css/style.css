@@ -457,6 +457,47 @@ footer {
 .application-stats-section .row{
     margin-bottom: 20px;
 }
-.employer-stats-section{
 
+
+
+/*** add department ***/
+.add-department{
+    width: 80%;
+    position: absolute;
+    right: 1%;
+    top:0;
+}
+.add-department .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: skyblue;
+    margin-top: 10px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 600;
+}
+.add-department section{
+    padding: 20px;
+}
+.add-department .card-header{
+    text-align: center;
+    background-color: #4CC9FE;
+    color:white;
+}
+.add-department .main-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin:140px auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.add-department .main-content i{
+    font-size: 40px;
 }
