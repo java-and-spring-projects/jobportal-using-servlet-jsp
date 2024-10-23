@@ -12,7 +12,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/employer/company-details"><i class="fas fa-building"></i> Company Details</a>
         </li>
          <li>
-            <a class="nav-link" href="profile.jsp"><i class="fas fa-user"></i>Employer Profile</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/employer_profile.jsp"><i class="fas fa-user"></i>Employer Profile</a>
         <hr>
         <li class="nav-item">
             <a class="nav-link" href="post_job.jsp"><i class="fas fa-plus-circle"></i> Post Job</a>

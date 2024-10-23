@@ -543,3 +543,35 @@ footer {
 .company-details .main-content .card-body span{
      font-weight:600;
 }
+
+
+
+
+
+
+/**** employer profile ***/
+.employer-profile{
+    width: 80%;
+    position: absolute;
+    right: 1%;
+    top:0;
+}
+.employer-profile .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: skyblue;
+    margin-top: 10px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 600;
+}
+.employer-profile .main-content{
+     margin:30px auto;
+}
+.employer-profile .main-content .card-body span{
+     font-weight:600;
+}
+
