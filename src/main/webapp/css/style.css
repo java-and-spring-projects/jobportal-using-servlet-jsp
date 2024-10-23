@@ -457,6 +457,16 @@ footer {
 .application-stats-section .row{
     margin-bottom: 20px;
 }
+.employer-dashboard .company-card{
+    display: flex;
+    align-items: start;
+    align-content: start;
+    padding: 20px;
+
+}
+.employer-dashboard .company-card span{
+    font-weight: 600;
+}
 
 
 
@@ -503,4 +513,33 @@ footer {
 }
 .add-company .main-content i{
     font-size: 40px;
+}
+
+
+
+
+/**** company details ***/
+.company-details{
+    width: 80%;
+    position: absolute;
+    right: 1%;
+    top:0;
+}
+.company-details .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: skyblue;
+    margin-top: 10px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 600;
+}
+.company-details .main-content{
+     margin:30px auto;
+}
+.company-details .main-content .card-body span{
+     font-weight:600;
 }

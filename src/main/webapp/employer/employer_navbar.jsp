@@ -6,10 +6,10 @@
     <h4>Employer Dashboard</h4>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active" href="employer_dashboard.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a class="nav-link active" href="${pageContext.request.contextPath}/employer/employer-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="company_profile.jsp"><i class="fas fa-building"></i> Company Details</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/company-details"><i class="fas fa-building"></i> Company Details</a>
         </li>
          <li>
             <a class="nav-link" href="profile.jsp"><i class="fas fa-user"></i>Employer Profile</a>
