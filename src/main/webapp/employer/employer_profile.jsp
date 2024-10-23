@@ -29,7 +29,7 @@
 
             <div class="main-content">
                 <section>
-                    <h3>Company Information</h3>
+                    <h3>Employer Profile</h3>
                     <div class="card employer-card">
                         <div class="card-body">
                             <img src="../images/users/${sessionScope.user.pic}" alt="Company Logo" class="img-thumbnail" style="width: 100px; height: 100px;">
