@@ -67,6 +67,7 @@ public class CompanyDao {
             if (rs.next()) {
                 company=new Company();
 
+                company.setCompanyId(rs.getInt("company_id"));
                 company.setCompanyName(rs.getString("company_name"));
                 company.setCompanyAddress(rs.getString("company_address"));
                 company.setCompanyWebsite(rs.getString("company_website"));

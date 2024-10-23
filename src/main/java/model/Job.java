@@ -20,9 +20,9 @@ public class Job {
     private Timestamp createdAt;
     private String experience;
     private String education;
-    private String jobRequirements;
-    private String jobResponsibilities;
-    private String jobBenefits;
+    private String requirements;
+    private String responsibilities;
+    private String benefits;
     private String vacancy;
 
     private Company company;
