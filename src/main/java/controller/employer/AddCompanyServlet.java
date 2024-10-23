@@ -3,7 +3,6 @@ package controller.employer;
 
 import dao.CompanyDao;
 import model.Company;
-import model.Department;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -30,17 +29,13 @@ public class AddCompanyServlet extends HttpServlet {
         String companyEmail = request.getParameter("companyEmail");
         String companySize = request.getParameter("companySize");
         String foundedYear = request.getParameter("foundedYear");
-        String dept = request.getParameter("dept");
+        String companyType = request.getParameter("company_type");
         Part filePart = request.getPart("pic"); // Retrieves <input type="file" name="image">
-        System.out.println("dept"+dept);
 
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-
-        Department department = new Department();
-        department.setDepartmentId(Integer.parseInt(dept));
 
         Company company = new Company();
         company.setUser(user);
@@ -50,7 +45,7 @@ public class AddCompanyServlet extends HttpServlet {
         company.setCompanyEmail(companyEmail);
         company.setCompanySize(companySize);
         company.setFoundedYear(foundedYear);
-        company.setDepartment(department);
+        company.setCompanyType(companyType);
         company.setLogo(filePart.getSubmittedFileName());
 
         CompanyDao companyDao = new CompanyDao();

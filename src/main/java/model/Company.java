@@ -21,6 +21,5 @@ public class Company {
     private String companyType;
     private String logo;
 
-    private Department department;
     private User user;
 }

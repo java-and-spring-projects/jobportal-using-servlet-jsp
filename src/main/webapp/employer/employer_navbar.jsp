@@ -23,12 +23,6 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="add_department.jsp"><i class="fas fa-plus"></i> Add Department</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="departments.jsp"><i class="fas fa-sitemap"></i>View Departments</a>
-        </li><hr>
-        <li class="nav-item">
             <a class="nav-link" href="view_applicants.jsp"><i class="fas fa-users"></i> View Applicants</a>
         </li>
 

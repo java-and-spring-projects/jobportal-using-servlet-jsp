@@ -21,6 +21,7 @@ public class EmployerDashboardServlet extends HttpServlet {
 
         CompanyDao companyDao = new CompanyDao();
         Company companyExist = companyDao.isCompanyExist(loggedUser.getUserId());
+        System.out.println("companyExist: " + companyExist);
 
         request.setAttribute("company", companyExist);
 

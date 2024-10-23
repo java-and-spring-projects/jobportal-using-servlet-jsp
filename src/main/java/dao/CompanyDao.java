@@ -22,13 +22,13 @@ public class CompanyDao {
     }
 
     public int addCompany(Company company) {
-        String sql = "INSERT INTO Company (employer_id, dept_id, company_name, company_address, company_website, company_email,company_size, founded_year, logo ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Company (employer_id,company_type, company_name, company_address, company_website, company_email,company_size, founded_year, logo ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
 
             stmt.setInt(1,company.getUser().getUserId());
-            stmt.setInt(2,company.getDepartment().getDepartmentId());
+            stmt.setString(2, company.getCompanyType());
             stmt.setString(3, company.getCompanyName());
             stmt.setString(4, company.getCompanyAddress());
             stmt.setString(5, company.getCompanyWebsite());
