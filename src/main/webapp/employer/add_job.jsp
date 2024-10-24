@@ -31,7 +31,7 @@
 
 
             <div class="main-content">
-                 <h2 class="heading">Post Your Job</h2>
+                 <h4 class="heading">Post Your Job</h4>
                    <form action="${pageContext.request.contextPath}/employer/add-job" method="POST">
                        <div class="mb-3">
                          <label for="cname" class="form-label">Job Title:</label>

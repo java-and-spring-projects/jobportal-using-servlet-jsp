@@ -3,11 +3,14 @@ package dao;
 
 import model.Candidate;
 import model.Company;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CandidateDao {
 
@@ -65,6 +68,41 @@ public class CandidateDao {
                 candidate.setResume(rs.getBinaryStream("resume"));
                 return candidate;
             }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return null;
+    }
+
+    public List<Candidate> getAllCandidates() {
+        String sql = "SELECT c.*, u.* FROM Candidate c join User u on c.user_id = u.user_id";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            List<Candidate> candidates = new ArrayList<>();
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
+                user.setStatus(rs.getString("status"));
+                user.setPhone(rs.getString("phone"));
+
+
+                Candidate candidate = new Candidate();
+                candidate.setCandidateId(rs.getInt("candidate_id"));
+                candidate.setName(rs.getString("name"));
+                candidate.setAddress(rs.getString("address"));
+                candidate.setEducation(rs.getString("education"));
+                candidate.setSkills(rs.getString("skills"));
+                candidate.setExperience(rs.getString("experience"));
+                candidate.setResume(rs.getBinaryStream("resume"));
+                candidate.setUser(user);
+
+                candidates.add(candidate);
+            }
+            return candidates;
         } catch (Exception e) {
             // TODO: handle exception
         }

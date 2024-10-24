@@ -18,17 +18,17 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/employer/add_job.jsp"><i class="fas fa-plus-circle"></i> Post Job</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="view_jobs.jsp"><i class="fas fa-briefcase"></i> View Jobs</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_jobs.jsp"><i class="fas fa-briefcase"></i> View Jobs</a>
         </li><hr>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_applications.jsp"><i class="fas fa-users"></i> View Applicants</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_applications.jsp"><i class="fas fa-users"></i> View Applications</a>
         </li>
 
 
         <li class="nav-item">
-            <a class="nav-link" href="registered_candidates.jsp"><i class="fas fa-user-graduate"></i> View Candidates</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_candidates.jsp"><i class="fas fa-user-graduate"></i> View Candidates</a>
         </li>
         <hr>
         <li class="nav-item">

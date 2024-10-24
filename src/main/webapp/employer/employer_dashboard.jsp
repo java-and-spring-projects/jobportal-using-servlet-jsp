@@ -12,9 +12,15 @@
     List<Job> activeJobs = jobDao.getActiveJobsByUserId(user.getUserId());
     List<Job> closedJobs = jobDao.getClosedJobsByUserId(user.getUserId());
 
+
     request.setAttribute("jobs", jobs);
     request.setAttribute("activeJobs", activeJobs);
     request.setAttribute("closedJobs", closedJobs);
+
+    ApplicationDao applicationDao = new ApplicationDao();
+    List<Application> applications = applicationDao.getAllApplications();
+    request.setAttribute("applications", applications);
+
 %>
 
 <!DOCTYPE html>
@@ -187,6 +193,52 @@
                                 </div>
                             </section>
 
+
+                            <!-- application Section -->
+                            <section>
+                                <h3>All Applications</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Application Id</th>
+                                                            <th>Applied date</th>
+                                                            <th>Candidate Name</th>
+                                                            <th>Candidate Address</th>
+                                                            <th>Job Title</th>
+                                                            <th>Job Location</th>
+                                                            <th>Application Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach items="${applications}" var="application">
+                                                            <tr>
+                                                                <td>${application.applicationId}</td>
+                                                                <td>${application.appliedDate}</td>
+                                                                <td>${application.candidate.name}</td>
+                                                                <td>${application.candidate.address}</td>
+                                                                <td>${application.job.jobTitle}</td>
+                                                                <td>${application.job.jobLocation}</td>
+                                                                <td>${application.status}</td>
+                                                                <td>
+                                                                   <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
+                                                                   <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                                                   <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                               </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
                             <!-- Company Information Section -->
                             <section>
                                 <h3>Company Information</h3>
@@ -204,85 +256,6 @@
                                 </div>
                             </section>
 
-                            <!-- Departments Section -->
-                            <section>
-                                <h3>Departments</h3>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Department Name</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Human Resources</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Marketing</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Development</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <a href="add_department.jsp" class="btn btn-success">Add New Department</a>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Registered Candidates Section -->
-                            <section>
-                                <h3>Registered Candidates</h3>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Candidate Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>John Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>(123) 456-7890</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-sm">View</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jane Smith</td>
-                                                    <td>jane@example.com</td>
-                                                    <td>(987) 654-3210</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-sm">View</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </section>
             </div>
         </div>
    	</main>
