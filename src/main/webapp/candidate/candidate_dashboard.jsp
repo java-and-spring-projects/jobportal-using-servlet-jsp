@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
+<%@ page import="dao.*, model.*, java.util.* " %>
+
+<%
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +27,9 @@
                 <div class="profile-card">
                     <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar">
                     <div class="profile-info">
-                        <h3>John Doe</h3>
-                        <p>Email: john.doe@example.com</p>
-                        <p>Location: New York, NY</p>
+                        <h3>${sessionScope.user.username}</h3>
+                        <p>Email: ${sessionScope.user.email}</p>
+                        <p>Location: </p>
                         <p>Skills: JavaScript, Python, React</p>
                     </div>
                     <button>Edit Profile</button>

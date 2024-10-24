@@ -1,7 +1,9 @@
 package controller;
 
+import dao.CandidateDao;
 import dao.CompanyDao;
 import dao.UserDao;
+import model.Candidate;
 import model.Company;
 import model.User;
 
@@ -45,8 +47,18 @@ public class LoginServlet extends HttpServlet {
 
             //if logged in user is candidate --> redirect to candidate dashboard
             else if (loggedUser.getRole().equals("JobSeeker")) {
-                response.sendRedirect("candidate/candidate_dashboard.jsp");
+
+                CandidateDao candidateDao = new CandidateDao();
+                Candidate candidateExist = candidateDao.isCandidateExist(loggedUser.getUserId());
+
+                if(candidateExist != null) { //if user has a candidate, redirect to candidate dashboard
+                    response.sendRedirect(request.getContextPath() + "/candidate/candidate-dashboard");
+                }
+                else { //if user does not have a candidate, redirect to add candidate page
+                    response.sendRedirect(request.getContextPath() + "/candidate/register_candidate.jsp");
+                }
             }
+
             else {
                 response.sendRedirect("error.jsp");
             }
