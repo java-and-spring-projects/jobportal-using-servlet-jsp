@@ -38,7 +38,6 @@ public class AddJobServlet extends HttpServlet {
 
         CompanyDao companyDao = new CompanyDao();
         Company companyExist = companyDao.isCompanyExist(user.getUserId());
-        System.out.println("companyExist"+companyExist);
 
 
         Job job = new Job();
@@ -60,7 +59,6 @@ public class AddJobServlet extends HttpServlet {
 
         JobDao jobDao = new JobDao();
         boolean b = jobDao.addJob(job);
-        System.out.println("add job"+b);
 
         response.sendRedirect(request.getContextPath()+"/employer/employer-dashboard");
     }

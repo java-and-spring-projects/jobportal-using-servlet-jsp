@@ -22,7 +22,7 @@ public class JobDao {
     }
 
     public boolean addJob(Job job) {
-        System.out.println("job: " + job);
+
         try {
             PreparedStatement preparedStatement = con.prepareStatement("insert into job (company_id, employer_id, job_title, job_description, location,  salary, job_type, experience, requirements, responsibilities, benefits, vacancy, education) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setInt(1, job.getCompany().getCompanyId());
