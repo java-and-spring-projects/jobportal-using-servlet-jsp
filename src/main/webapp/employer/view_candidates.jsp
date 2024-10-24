@@ -58,7 +58,6 @@
                                                 <th>Skills</th>
                                                 <th>Education</th>
                                                 <th>Experience</th>
-                                                <th>Resume</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -73,8 +72,7 @@
                                                   <td>${candidate.user.phone}</td>
                                                   <td>${candidate.skills}</td>
                                                   <td>${candidate.education}</td>
-                                                  <td>${candidate.experience}</td>
-                                                  <td>${candidate.resume}</td>
+                                                  <td>${candidate.experience} Years</td>
                                                   <td>${candidate.user.status}</td>
                                                   <td>
                                                        <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
