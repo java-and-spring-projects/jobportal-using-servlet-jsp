@@ -24,7 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Portal User Dashboard</title>
+    <title>Job Portal Candidate Dashboard</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -51,19 +51,7 @@
 
 
             <section id="job-listings">
-                <div>
-                    <label for="job-type">Filter by Job Type:</label>
-                    <select id="job-type" onchange="filterJobs()">
-                        <option value="">All</option>
-                        <option value="Software Engineer">Software Engineer</option>
-                        <option value="Data Analyst">Data Analyst</option>
-                        <option value="Product Manager">Product Manager</option>
-                        <option value="Web Developer">Web Developer</option>
-                        <option value="UI/UX Designer">UI/UX Designer</option>
-                        <option value="DevOps Engineer">DevOps Engineer</option>
-                        <option value="Project Manager">Project Manager</option>
-                    </select>
-                </div>
+
                 <input type="text" placeholder="Search for jobs..." id="job-search" onkeyup="filterJobs()">
                 <button onclick="filterJobs()">Search</button>
                 <div class="job-list" id="job-list">
@@ -75,7 +63,7 @@
                            </div>
                            <p>Company: ${job.company.companyName}</p>
                            <p>Location: ${job.jobLocation}</p>
-                           <a href="${pageContext.request.contextPath}/apply/candidate/${job.jobId}" id="btn-apply">Apply</a>
+                           <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">Apply</a>
                        </div>
                    </c:forEach>
                 </div>

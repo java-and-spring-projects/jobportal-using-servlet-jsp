@@ -62,6 +62,7 @@ public class CandidateDao {
                 candidate.setEducation(rs.getString("education"));
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
+                candidate.setResume(rs.getBinaryStream("resume"));
                 return candidate;
             }
         } catch (Exception e) {

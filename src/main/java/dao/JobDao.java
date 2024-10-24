@@ -208,4 +208,44 @@ public class JobDao {
         }
     }
 
+    public Job getJobById(int jobId) {
+        Job job = new Job();
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select j.*, c.* from job j join company c on j.employer_id=c.employer_id where job_id = ?");
+            preparedStatement.setInt(1, jobId);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                Company company = new Company();
+                company.setCompanyType(rs.getString("company_type"));
+                company.setCompanyName(rs.getString("company_name"));
+                company.setCompanyEmail(rs.getString("company_email"));
+                company.setCompanyWebsite(rs.getString("company_website"));
+                company.setCompanyAddress(rs.getString("company_address"));
+                company.setCompanySize(rs.getString("company_size"));
+                company.setFoundedYear(rs.getString("founded_year"));
+                company.setLogo(rs.getString("logo"));
+
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                job.setCompany(company);
+            }
+            return job;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
