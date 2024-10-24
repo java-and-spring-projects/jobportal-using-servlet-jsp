@@ -65,7 +65,7 @@
                                         <td>${application.job.jobLocation}</td>
                                         <td>${application.status}</td>
                                         <td>
-                                           <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
+                                           <a href="show-application?id=${application.applicationId}" class="btn btn-info btn-sm">View</a>
                                            <a href="#" class="btn btn-primary btn-sm">Edit</a>
                                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                        </td>

@@ -652,6 +652,50 @@ footer {
      margin:30px auto;
      text-align: center;
      font-size: 26px;
+}
+
+
+
+
+/****   show-application ***/
+.show-application{
+    width: 80%;
+    position: absolute;
+    right: 1%;
+    top:0;
+}
+.show-application .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: skyblue;
+    margin-top: 10px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 600;
+}
+.show-application .main-content .title{
+     margin:30px auto;
+     text-align: center;
+     font-size: 26px;
+}
+.show-application .main-content span{
+     font-weight: 600;
+}
+.show-application .main-content {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    padding: 10px 100px;
+    margin: 10px auto;
+}
+.show-application .main-content #section-application, #section-job, #section-candidate{
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+    padding: 30px 60px;
+    margin: 30px auto;
+}
+.show-application .main-content #section-application{
+    background-color: #E4E0E1;
 
 }
 
