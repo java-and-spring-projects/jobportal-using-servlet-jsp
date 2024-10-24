@@ -75,7 +75,7 @@
                            </div>
                            <p>Company: ${job.company.companyName}</p>
                            <p>Location: ${job.jobLocation}</p>
-                           <button onclick="applyForJob('Software Engineer')">Apply</button>
+                           <a href="${pageContext.request.contextPath}/apply/candidate/${job.jobId}" id="btn-apply">Apply</a>
                        </div>
                    </c:forEach>
                 </div>

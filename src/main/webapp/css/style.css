@@ -336,7 +336,17 @@ footer {
 .candidate-dashboard2 #job-listings .job-card .job-details .postedDate{
     font-weight: 600;
 }
-
+.candidate-dashboard2 #btn-apply{
+    display: inline-block;
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
 
 
 
