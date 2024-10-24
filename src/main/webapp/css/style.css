@@ -629,6 +629,35 @@ footer {
 
 
 
+/**** view applications ***/
+.view-applications{
+    width: 80%;
+    position: absolute;
+    right: 1%;
+    top:0;
+}
+.view-applications .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: skyblue;
+    margin-top: 10px;
+    color: yellow;
+    font-size: 30px;
+    font-weight: 600;
+}
+.view-applications .main-content .title{
+     margin:30px auto;
+     text-align: center;
+     font-size: 26px;
+
+}
+
+
+
+
 /**** register candidate ***/
 .register-candidate #register-candidate-form{
     width: 50%;
