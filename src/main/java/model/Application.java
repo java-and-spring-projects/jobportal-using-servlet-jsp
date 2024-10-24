@@ -16,7 +16,7 @@ public class Application {
     private Timestamp interviewDate;
     private String status;
     private String feedback;
-    private InputStream resume;
+    private byte[] resume;
 
     private User user;
     private Job job;

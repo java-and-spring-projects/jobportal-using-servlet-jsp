@@ -44,7 +44,7 @@
                        <section id="section-application">
                             <p>Applied on: <span>${application.appliedDate}</span></p>
                             <p>Status: <span>${application.status}</span></p>
-                            <p>Resume: <a href="${application.resume}" download>Download</a></p>
+                            <a href="view-resume?id=${application.applicationId}">Download Resume</a>
                        </section>
 
                        <section id="section-candidate">

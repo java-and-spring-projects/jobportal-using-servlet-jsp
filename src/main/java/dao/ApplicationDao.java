@@ -35,7 +35,7 @@ public class ApplicationDao {
             stmt.setInt(1,application.getUser().getUserId());
             stmt.setInt(2, application.getJob().getJobId());
             stmt.setString(3, application.getFeedback());
-            stmt.setBlob(4, application.getResume());
+//            stmt.setBlob(4, application.getResume());
 
             int res= stmt.executeUpdate();
 
@@ -156,6 +156,7 @@ public class ApplicationDao {
                 application.setInterviewDate(rs.getTimestamp("interview_date"));
                 application.setStatus(rs.getString("status"));
                 application.setFeedback(rs.getString("feedback"));
+                application.setResume(rs.getBytes("resume"));
                 application.setJob(job);
                 application.setUser(user);
                 application.setCandidate(candidate);
@@ -168,6 +169,7 @@ public class ApplicationDao {
         }
         return null;
     }
+
 
 
 }

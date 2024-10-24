@@ -9,6 +9,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 @WebServlet("/employer/show-application")
 @MultipartConfig(
@@ -23,6 +25,8 @@ public class ShowApplicationServlet extends HttpServlet {
 
         ApplicationDao applicationDao = new ApplicationDao();
         Application application = applicationDao.getApplicationById(applicationId);
+
+        byte[] resume = application.getResume();
 
 
         request.setAttribute("application", application);
