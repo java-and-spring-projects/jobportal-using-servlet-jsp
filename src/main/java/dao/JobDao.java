@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JobDao {
 
@@ -45,4 +47,110 @@ public class JobDao {
             return false;
         }
     }
+
+    public List<Job> getJobsByUserId(int userId) {
+
+        List<Job> jobs =new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from job where employer_id = ?");
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Job job = new Job();
+
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                jobs.add(job);
+            }
+            return jobs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Job> getActiveJobsByUserId(int userId) {
+
+        List<Job> jobs =new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from job where employer_id = ? and status = 'Open'");
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Job job = new Job();
+
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                jobs.add(job);
+            }
+            return jobs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Job> getClosedJobsByUserId(int userId) {
+
+        List<Job> jobs =new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from job where employer_id = ? and status = 'Close'");
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Job job = new Job();
+
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                jobs.add(job);
+            }
+            return jobs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

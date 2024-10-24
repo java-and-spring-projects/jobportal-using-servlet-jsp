@@ -1,6 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
+<%@ page import="dao.*, model.*, java.util.* " %>
+
+<%
+    HttpSession session1 = request.getSession();
+    User user = (User) session1.getAttribute("user");
+
+    JobDao jobDao = new JobDao();
+    List<Job> jobs = jobDao.getJobsByUserId(user.getUserId());
+    List<Job> activeJobs = jobDao.getActiveJobsByUserId(user.getUserId());
+    List<Job> closedJobs = jobDao.getClosedJobsByUserId(user.getUserId());
+
+    request.setAttribute("jobs", jobs);
+    request.setAttribute("activeJobs", activeJobs);
+    request.setAttribute("closedJobs", closedJobs);
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +54,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-briefcase"></i>
-                                                <h2>[Total Jobs]</h2>
+                                                <h2>${jobs.size()}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -50,7 +65,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-check-circle"></i>
-                                                <h2>[Active Jobs]</h2>
+                                                <h2>${activeJobs.size()}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +76,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-times-circle"></i>
-                                                <h2>[Closed Jobs]</h2>
+                                                <h2>${closedJobs.size()}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -145,29 +160,25 @@
                                                             <th>Job Title</th>
                                                             <th>Location</th>
                                                             <th>Date Posted</th>
+                                                            <th>Status</th>
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Software Engineer</td>
-                                                            <td>New York</td>
-                                                            <td>2023-10-01</td>
-                                                            <td>
-                                                                <a href="view_job.jsp?id=2" class="btn btn-info btn-sm">View</a>
-                                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Product Manager</td>
-                                                            <td>San Francisco</td>
-                                                            <td>2023-09-15</td>
-                                                            <td>
-                                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                            </td>
-                                                        </tr>
+                                                      <c:forEach items="${jobs}" var="job">
+                                                          <tr>
+                                                              <td>${job.jobTitle}</td>
+                                                              <td>${job.jobLocation}</td>
+                                                              <td>${job.createdAt}</td>
+                                                              <td>${job.jobStatus}</td>
+                                                              <td>
+                                                                   <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
+                                                                   <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                                                   <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                               </td>
+                                                          </tr>
+                                                      </c:forEach>
+
                                                     </tbody>
                                                 </table>
                                             </div>
