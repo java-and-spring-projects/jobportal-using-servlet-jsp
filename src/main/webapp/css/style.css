@@ -161,7 +161,7 @@ footer {
     border: 1px solid #dddddd;
     border-radius: 5px;
     padding: 20px;
-    height: 170px;
+    height: 190px;
     width: 100%;
     background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -177,6 +177,17 @@ footer {
 .candidate-dashboard1 .job-card p{
     padding: 10px;
 }
+.candidate-dashboard1 #job-listings{
+    width: 100%;
+}
+.candidate-dashboard1 #job-listings .job-card .job-details{
+    display: flex;
+    justify-content: space-between;
+}
+.candidate-dashboard1 #job-listings .job-card .job-details .postedDate{
+    font-weight: 600;
+}
+
 
 
 

@@ -1,6 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false" %>
+<%@ page import="dao.*, model.*, java.util.* " %>
+
+<%
+    HttpSession session1 = request.getSession();
+    User user = (User) session1.getAttribute("user");
+
+    JobDao jobDao = new JobDao();
+    List<Job> jobs = jobDao.getAllJobsWithCompany();
+
+    request.setAttribute("jobs", jobs);
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,16 +45,17 @@
                 <input type="text" placeholder="Search for jobs..." id="job-search" onkeyup="filterJobs()">
                 <button onclick="filterJobs()">Search</button>
                 <div class="job-list" id="job-list">
-                    <div class="job-card" data-type="Software Engineer">
-                        <h3>Software Engineer</h3>
-                        <p>Company: Tech Co.</p>
-                        <button onclick="applyForJob('Software Engineer')">Apply</button>
-                    </div>
-                    <div class="job-card" data-type="Data Analyst">
-                        <h3>Data Analyst</h3>
-                        <p>Company: Data Inc.</p>
-                        <button onclick="applyForJob('Data Analyst')">Apply</button>
-                    </div>
+                    <c:forEach items="${jobs}" var="job">
+                        <div class="job-card" data-type="Software Engineer">
+                            <div class="job-details">
+                                <h3>${job.jobTitle}</h3>
+                                <p>Posted on: <span class="postedDate">${job.createdAt}</span></p>
+                            </div>
+                            <p>Company: ${job.company.companyName}</p>
+                            <p>Location: ${job.jobLocation}</p>
+                            <button onclick="applyForJob('Software Engineer')">Apply</button>
+                        </div>
+                    </c:forEach>
                 </div>
             </section>
         </div>
