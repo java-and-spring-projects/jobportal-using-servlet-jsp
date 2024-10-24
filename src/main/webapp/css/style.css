@@ -255,7 +255,7 @@ footer {
     border: 1px solid #dddddd;
     border-radius: 5px;
     padding: 20px;
-    height: 170px;
+    height: 190px;
     width: 100%;
     background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -287,7 +287,10 @@ footer {
     padding: 20px;
     text-align: center;
 }
-
+.candidate-dashboard2 .profile-card a{
+    display:inline-block;
+    margin-top: 30px;
+}
 .candidate-dashboard2 .avatar {
     border-radius: 50%;
     margin-bottom: 15px;
@@ -326,7 +329,13 @@ footer {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.candidate-dashboard2 #job-listings .job-card .job-details{
+    display: flex;
+    justify-content: space-between;
+}
+.candidate-dashboard2 #job-listings .job-card .job-details .postedDate{
+    font-weight: 600;
+}
 
 
 

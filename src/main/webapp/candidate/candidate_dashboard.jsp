@@ -1,9 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.* " %>
 
 <%
+    HttpSession session1 = request.getSession();
+    User user = (User) session1.getAttribute("user");
+
+    CandidateDao candidateDao = new CandidateDao();
+    Candidate candidate = candidateDao.isCandidateExist(user.getUserId());
+    request.setAttribute("candidate", candidate);
+
+    JobDao jobDao = new JobDao();
+    List<Job> jobs = jobDao.getAllJobsWithCompany();
+
+    request.setAttribute("jobs", jobs);
 
 %>
 
@@ -25,12 +37,12 @@
             <section id="profile">
                 <h2>User Profile</h2>
                 <div class="profile-card">
-                    <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar">
+                    <img src="${pageContext.request.contextPath}/images/users/${sessionScope.user.pic}" alt="User Avatar" class="avatar">
                     <div class="profile-info">
                         <h3>${sessionScope.user.username}</h3>
                         <p>Email: ${sessionScope.user.email}</p>
-                        <p>Location: </p>
-                        <p>Skills: JavaScript, Python, React</p>
+                        <p>Address:${candidate.address} </p>
+                        <p>Skills: ${candidate.skills}</p>
                     </div>
                     <button>Edit Profile</button>
                     <a href="${pageContext.request.contextPath}/logout">Logout</a>
@@ -55,16 +67,17 @@
                 <input type="text" placeholder="Search for jobs..." id="job-search" onkeyup="filterJobs()">
                 <button onclick="filterJobs()">Search</button>
                 <div class="job-list" id="job-list">
-                    <div class="job-card" data-type="Software Engineer">
-                        <h3>Software Engineer</h3>
-                        <p>Company: Tech Co.</p>
-                        <button onclick="applyForJob('Software Engineer')">Apply</button>
-                    </div>
-                    <div class="job-card" data-type="Data Analyst">
-                        <h3>Data Analyst</h3>
-                        <p>Company: Data Inc.</p>
-                        <button onclick="applyForJob('Data Analyst')">Apply</button>
-                    </div>
+                   <c:forEach items="${jobs}" var="job">
+                       <div class="job-card" data-type="Software Engineer">
+                           <div class="job-details">
+                               <h3>${job.jobTitle}</h3>
+                               <p>Posted on:  <span class="postedDate"><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></span></p>
+                           </div>
+                           <p>Company: ${job.company.companyName}</p>
+                           <p>Location: ${job.jobLocation}</p>
+                           <button onclick="applyForJob('Software Engineer')">Apply</button>
+                       </div>
+                   </c:forEach>
                 </div>
             </section>
         </div>
