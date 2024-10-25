@@ -27,7 +27,7 @@ public class JobDao {
     public boolean addJob(Job job) {
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("insert into job (company_id, employer_id, job_title, job_description, location,  salary, job_type, experience, requirements, responsibilities, benefits, vacancy, education) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = con.prepareStatement("insert into job (company_id, employer_id, job_title, job_description, location,  salary, job_type, experience, requirements, responsibilities, benefits, vacancy, education, last_date) values(?, ?,?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setInt(1, job.getCompany().getCompanyId());
             preparedStatement.setInt(2, job.getUser().getUserId());
             preparedStatement.setString(3, job.getJobTitle());
@@ -41,6 +41,7 @@ public class JobDao {
             preparedStatement.setString(11, job.getBenefits());
             preparedStatement.setString(12, job.getVacancy());
             preparedStatement.setString(13, job.getEducation());
+            preparedStatement.setTimestamp(14, job.getLastDate());
             preparedStatement.executeUpdate();
             return true;
         } catch (Exception e) {

@@ -8,13 +8,13 @@ import model.Job;
 import model.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet("/employer/add-job")
 public class AddJobServlet extends HttpServlet {
@@ -31,6 +31,20 @@ public class AddJobServlet extends HttpServlet {
         String responsibilities = request.getParameter("responsibilities");
         String benefits = request.getParameter("benefits");
         String vacancy = request.getParameter("vacancy");
+        String lastDate = request.getParameter("last_date");
+
+        //convert string to timestamp
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Adjust the format as needed
+        Date date = null;
+        try {
+            date = sdf.parse(lastDate);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Timestamp timestampLastDate = new Timestamp(date.getTime());
+
+
+
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -53,6 +67,7 @@ public class AddJobServlet extends HttpServlet {
         job.setResponsibilities(responsibilities);
         job.setBenefits(benefits);
         job.setVacancy(vacancy);
+        job.setLastDate(timestampLastDate);
         job.setUser(user);
         job.setCompany(companyExist);
 

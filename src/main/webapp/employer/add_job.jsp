@@ -93,6 +93,11 @@
                            <input type="number" class="form-control" name="vacancy" id="email" placeholder="Enter vacancy" required>
                        </div>
 
+                       <div class="mb-3">
+                           <label for="last" class="form-label">Last Date:</label>
+                           <input type="date" class="form-control" name="last_date" id="last" placeholder="Enter deadline" required>
+                       </div>
+
 
                      <button type="submit" class="btn btn-primary">Post Job</button>
                    </form>

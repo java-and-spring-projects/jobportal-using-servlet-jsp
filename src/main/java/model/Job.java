@@ -18,12 +18,14 @@ public class Job {
     private String jobStatus;
     private String jobType;
     private Timestamp createdAt;
+    private Timestamp lastDate;
     private String experience;
     private String education;
     private String requirements;
     private String responsibilities;
     private String benefits;
     private String vacancy;
+
 
     private Company company;
     private User user;
