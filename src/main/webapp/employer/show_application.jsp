@@ -29,7 +29,7 @@
             padding: 50px 60px;
             background-color: #fff;
             display: flex;
-            gap: 80px;
+            gap: 60px;
             flex-direction: column;
             width: 70%;
             margin: auto;
@@ -38,7 +38,7 @@
         }
         .show-application .main-content .application-card{
             box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            padding: 40px 60px;
+            padding: 40px 200px;
             margin: auto;
             border-radius: 5px;
         }
@@ -49,7 +49,7 @@
         .show-application .main-content .candidate-job-details{
             display: flex;
             justify-content: space-evenly;
-            gap: 70px;
+            gap: 50px;
         }
     </style>
 </head>
@@ -72,9 +72,9 @@
                     <div class="application-card">
                         <p>Applied on: <span>${application.appliedDate}</span></p>
                         <p>Status: <span>${application.status}</span></p>
-                        <p>Resume: <span><a href="${pageContext.request.contextPath}/employer/view-resume?id=${application.applicationId}" target="_blank">View Resume</a></span></p>
+                        <p>Resume: <span><a href="${pageContext.request.contextPath}/employer/view-resume?id=${application.applicationId}" target="_blank">Download Resume</a></span></p>
+                        <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Accepted" class="btn btn-success btn-sm">Accept</a>
                         <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Rejected" class="btn btn-danger btn-sm">Reject</a>
-                          <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Accepted" class="btn btn-success btn-sm">Accept</a>
 
                     </div>
                     <div class="candidate-job-details">
