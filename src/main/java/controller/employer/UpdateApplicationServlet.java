@@ -20,7 +20,7 @@ import java.io.IOException;
 public class UpdateApplicationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int applicationId = Integer.parseInt(request.getParameter("applicationId"));
+        int applicationId = Integer.parseInt(request.getParameter("id"));
         String status = request.getParameter("status");
 
         ApplicationDao applicationDao = new ApplicationDao();
