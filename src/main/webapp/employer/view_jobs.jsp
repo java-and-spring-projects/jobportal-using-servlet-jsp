@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.*" %>
 
@@ -55,6 +56,7 @@
                                                 <th>Job Title</th>
                                                 <th>Location</th>
                                                 <th>Date Posted</th>
+                                                <th>Last Date</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -64,7 +66,8 @@
                                               <tr>
                                                   <td>${job.jobTitle}</td>
                                                   <td>${job.jobLocation}</td>
-                                                  <td>${job.createdAt}</td>
+                                                  <td><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></td>
+                                                  <td><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></td>
                                                   <td>${job.jobStatus}</td>
                                                   <td>
                                                        <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>

@@ -76,6 +76,7 @@ public class JobDao {
                 job.setEducation(rs.getString("education"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
+                job.setLastDate(rs.getTimestamp("last_date"));
                 jobs.add(job);
             }
             return jobs;
@@ -240,6 +241,7 @@ public class JobDao {
                 job.setEducation(rs.getString("education"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
+                job.setLastDate(rs.getTimestamp("last_date"));
                 job.setCompany(company);
             }
             return job;

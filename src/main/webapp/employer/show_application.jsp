@@ -97,6 +97,7 @@
                                 <p>Salary: <span>${application.job.jobSalary} /- p.a.</span></p>
                                 <p>Job Type: <span>${application.job.jobType}</span></p>
                                 <p>Description: <span>${application.job.jobDescription}</span></p>
+                                <p>Vacancy: <span>${application.job.vacancy}</span></p>
                             </div>
                         </div>
                     </div>

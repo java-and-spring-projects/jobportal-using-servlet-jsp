@@ -51,8 +51,8 @@
                 <h4 class="job-title"><span>${job.jobTitle}</span></h4>
                 <p><i class="fa-solid fa-location-dot"></i> <span>${job.jobLocation}</span></p>
                 <p><i class="fa-solid fa-money-bill-1"></i> <span>${job.jobSalary} p.a.</span></p>
-                <p>Job type: <span>${job.jobType}</span></p>
                 <p>Posted on: <span class="postedDate"><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></span></p>
+                <p>Last date to apply: <span class="lastDateToApply"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
                  <hr>
                  <div class="requirements">
                     <p class="title">Requirements</p>
@@ -87,6 +87,7 @@
                     </div>
                     <div class="card-body">
                         <p>Status: <span>${job.jobStatus}</span></p>
+                        <p>Job type: <span>${job.jobType}</span></p>
                         <p>Education: <span>${job.education}</span></p>
                          <p>Experience: <span>${job.experience} Years</span></p>
                         <p>Total vacancy: <span>${job.vacancy}</span></p>
