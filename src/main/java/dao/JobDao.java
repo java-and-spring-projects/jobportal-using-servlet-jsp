@@ -86,73 +86,35 @@ public class JobDao {
         }
     }
 
-    public List<Job> getActiveJobsByUserId(int userId) {
-
-        List<Job> jobs =new ArrayList<>();
+    public int getActiveJobsByUserId(int userId) {
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from job where employer_id = ? and status = 'Open'");
+            PreparedStatement preparedStatement = con.prepareStatement("select count(*) from job where employer_id = ? and status = 'Open'");
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                Job job = new Job();
-
-                job.setJobId(rs.getInt("job_id"));
-                job.setJobTitle(rs.getString("job_title"));
-                job.setJobDescription(rs.getString("job_description"));
-                job.setJobLocation(rs.getString("location"));
-                job.setJobSalary(rs.getString("salary"));
-                job.setJobType(rs.getString("job_type"));
-                job.setExperience(rs.getString("experience"));
-                job.setRequirements(rs.getString("requirements"));
-                job.setResponsibilities(rs.getString("responsibilities"));
-                job.setBenefits(rs.getString("benefits"));
-                job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
-                job.setCreatedAt(rs.getTimestamp("posted_on"));
-                job.setJobStatus(rs.getString("status"));
-                jobs.add(job);
+            if (rs.next()) {
+                return rs.getInt(1);
             }
-            return jobs;
+            return 0;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return 0;
         }
     }
 
-    public List<Job> getClosedJobsByUserId(int userId) {
-
-        List<Job> jobs =new ArrayList<>();
+    public int getClosedJobsByUserId(int userId) {
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from job where employer_id = ? and status = 'Close'");
+            PreparedStatement preparedStatement = con.prepareStatement("select count(*) from job where employer_id = ? and status = 'Close'");
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                Job job = new Job();
-
-                job.setJobId(rs.getInt("job_id"));
-                job.setJobTitle(rs.getString("job_title"));
-                job.setJobDescription(rs.getString("job_description"));
-                job.setJobLocation(rs.getString("location"));
-                job.setJobSalary(rs.getString("salary"));
-                job.setJobType(rs.getString("job_type"));
-                job.setExperience(rs.getString("experience"));
-                job.setRequirements(rs.getString("requirements"));
-                job.setResponsibilities(rs.getString("responsibilities"));
-                job.setBenefits(rs.getString("benefits"));
-                job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
-                job.setCreatedAt(rs.getTimestamp("posted_on"));
-                job.setJobStatus(rs.getString("status"));
-                jobs.add(job);
+            if (rs.next()) {
+                return rs.getInt(1);
             }
-            return jobs;
+            return 0;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return 0;
         }
     }
 

@@ -25,6 +25,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal Candidate Dashboard</title>
+    <%@ include file="../components/header.jsp"%>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -35,7 +36,6 @@
         <div class="content">
 
             <section id="profile">
-                <h2>User Profile</h2>
                 <div class="profile-card">
                     <img src="${pageContext.request.contextPath}/images/users/${sessionScope.user.pic}" alt="User Avatar" class="avatar">
                     <div class="profile-info">
@@ -52,8 +52,51 @@
 
             <section id="job-listings">
 
-                <input type="text" placeholder="Search for jobs..." id="job-search" onkeyup="filterJobs()">
-                <button onclick="filterJobs()">Search</button>
+                <input type="text" placeholder="Enter skill / company / designation..." id="job-search" onkeyup="filterJobs()">
+
+                <form>
+                    <select name="job-type" id="job-type">
+                        <option>-Select Job Type-</option>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Remote">Remote</option>
+                    </select>
+                    <select name="job-location" id="job-location">
+                        <option>-Select Job Location-</option>
+                        <option value="Noida">Noida</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Gurugram">Gurugram</option>
+                        <option value="Faridabad">Faridabad</option>
+                        <option value="Ghaziabad">Ghaziabad</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Lucknow">Lucknow</option>
+                    </select>
+                    <select name="experience" id="experience">
+                        <option>-Select Experience-</option>
+                        <option value="0">Fresher</option>
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="4">4 Years</option>
+                        <option value="5">5 Years</option>
+                        <option value="6">6 Years</option>
+                        <option value="7">7 Years</option>
+                        <option value="8">8 Years</option>
+                     </select>
+                     <input type="submit" value="Search" class="search-btn btn btn-primary" id="btn-search">
+                </form>
+
+
                 <div class="job-list" id="job-list">
                    <c:forEach items="${jobs}" var="job">
                        <div class="job-card" data-type="Software Engineer">

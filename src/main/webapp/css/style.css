@@ -182,25 +182,22 @@ footer {
 /* candidate dashboard after login*/
  .candidate-dashboard2 .content {
     display: flex;
-    gap: 30px;
-    border: 1px solid #dddddd;
+    gap: 20px;
     border-radius: 5px;
     margin: 20px auto;
     flex-wrap: wrap;
-    padding: 20px;
-    width: 80%;
+    width: 100%;
     overflow: hidden;
 }
 #profile{
-    width: 25%;
-    border: 1px solid #dddddd;
+    width: 30%;
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px 20px;
     margin-top: 20px;
     transition: transform 0.2s;
 }
 #job-listings{
-    width: 72%;
+    width: 68%;
     background: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 5px;
@@ -223,13 +220,21 @@ footer {
 .candidate-dashboard2 .content button:hover{
     background: #2c3e50;
 }
-.candidate-dashboard2 input[type="text"], select {
+.candidate-dashboard2 input[type="text"] {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #dddddd;
     border-radius: 5px;
-    width: 90%;
+    width: 95%;
 }
+.candidate-dashboard2 select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    width: 26%;
+}
+
 .candidate-dashboard2 .job-list {
     display: flex;
     flex-direction: column;
@@ -240,7 +245,7 @@ footer {
     border: 1px solid #dddddd;
     border-radius: 5px;
     padding: 20px;
-    height: 190px;
+    height: 200px;
     width: 100%;
     background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -251,10 +256,13 @@ footer {
     transform: scale(1.02);
 }
 .candidate-dashboard2 .job-card h3{
-    padding: 10px;
+    padding-left: 8px;
+    font-size: 20px;
 }
 .candidate-dashboard2 .job-card p{
-    padding: 10px;
+    padding-left: 8px;
+    font-size: 14px;
+    color:gray;
 }
 
 .candidate-dashboard2 .profile {
@@ -269,7 +277,7 @@ footer {
     border: 1px solid #dddddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 .candidate-dashboard2 .profile-card a{
@@ -327,6 +335,17 @@ footer {
     color: white;
     border: none;
     padding: 8px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+#btn-search{
+    display: inline-block;
+    background: #0D92F4;
+    color: white;
+    border: none;
+    padding: 12px 36px;
     cursor: pointer;
     margin-left: 10px;
     border-radius: 5px;

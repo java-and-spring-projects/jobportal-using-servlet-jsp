@@ -10,9 +10,8 @@
 
     JobDao jobDao = new JobDao();
     List<Job> jobs = jobDao.getJobsByUserId(user.getUserId());
-    System.out.println(jobs);
-    List<Job> activeJobs = jobDao.getActiveJobsByUserId(user.getUserId());
-    List<Job> closedJobs = jobDao.getClosedJobsByUserId(user.getUserId());
+    int activeJobs = jobDao.getActiveJobsByUserId(user.getUserId());
+    int closedJobs = jobDao.getClosedJobsByUserId(user.getUserId());
 
 
     request.setAttribute("jobs", jobs);
@@ -22,6 +21,10 @@
     ApplicationDao applicationDao = new ApplicationDao();
     List<Application> applications = applicationDao.getAllApplications();
     request.setAttribute("applications", applications);
+
+    int totalApplications = applicationDao.getTotalApplications();
+    int acceptedApplications = applicationDao.getAcceptedApplications();
+    int rejectedApplications = applicationDao.getRejectedApplications();
 
 %>
 
@@ -37,6 +40,11 @@
         body {
             background-color: #f8f9fa;
         }
+        .employer-dashboard .main-content .job-stats-section, .employer-dashboard .main-content .application-stats-section {
+            width: 84%;
+            margin: 0 auto;
+        }
+
     </style>
 </head>
 <body>
@@ -57,7 +65,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="card stat-card">
-                                            <div class="card-header">
+                                            <div class="card-header bg-secondary">
                                                 <h5>Total Jobs Posted</h5>
                                             </div>
                                             <div class="card-body">
@@ -68,23 +76,23 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="card stat-card">
-                                            <div class="card-header">
+                                            <div class="card-header bg-secondary">
                                                 <h5>Active Jobs</h5>
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-check-circle"></i>
-                                                <h2>${activeJobs.size()}</h2>
+                                                <h2><%= activeJobs %></h2>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="card stat-card">
-                                            <div class="card-header">
-                                                <h5>Closed Jobs</h5>
+                                            <div class="card-header bg-secondary">
+                                                <h5>Closed Jobs </h5>
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-times-circle"></i>
-                                                <h2>${closedJobs.size()}</h2>
+                                                <h2><%= closedJobs %></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -97,35 +105,35 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="card stat-card">
-                                            <div class="card-header">
+                                            <div class="card-header bg-secondary">
                                                 <h5>Total Applications</h5>
                                             </div>
                                             <div class="card-body">
                                                 <i class="fas fa-file-alt"></i>
-                                                <h2>[Total Applications]</h2>
+                                                <h2><%= totalApplications %></h2>
                                             </div>
                                         </div>
                                     </div>
 
                                   <div class="col-md-4">
                                       <div class="card stat-card">
-                                          <div class="card-header">
+                                          <div class="card-header bg-secondary">
                                               <h5>Total Accepted Applications</h5>
                                           </div>
                                           <div class="card-body">
                                               <i class="fas fa-check-circle"></i>
-                                              <h2>[Total Accepted]</h2>
+                                              <h2><%= acceptedApplications %></h2>
                                           </div>
                                       </div>
                                   </div>
                                   <div class="col-md-4">
                                       <div class="card stat-card">
-                                          <div class="card-header">
+                                          <div class="card-header bg-secondary">
                                               <h5>Total Rejected Applications</h5>
                                           </div>
                                           <div class="card-body">
                                               <i class="fas fa-times-circle"></i>
-                                              <h2>[Total Rejected]</h2>
+                                              <h2><%= rejectedApplications %></h2>
                                           </div>
                                       </div>
                                   </div>
@@ -134,110 +142,6 @@
 
                             </section>
 
-                            <!-- Job Postings Section -->
-                            <section>
-                                <h3>Your Job Postings</h3>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Job Title</th>
-                                                            <th>Location</th>
-                                                            <th>Date Posted</th>
-                                                            <th>Last Date</th>
-                                                            <th>Status</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                      <c:forEach items="${jobs}" var="job">
-                                                          <tr>
-                                                              <td>${job.jobTitle}</td>
-                                                              <td>${job.jobLocation}</td>
-                                                              <td><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></td>
-                                                              <td><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></td>
-                                                              <td>${job.jobStatus}</td>
-                                                              <td>
-                                                                   <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
-                                                                   <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                                   <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                               </td>
-                                                          </tr>
-                                                      </c:forEach>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-
-                            <!-- application Section -->
-                            <section>
-                                <h3>All Applications</h3>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Application Id</th>
-                                                            <th>Applied date</th>
-                                                            <th>Candidate Name</th>
-                                                            <th>Candidate Address</th>
-                                                            <th>Job Title</th>
-                                                            <th>Job Location</th>
-                                                            <th>Application Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <c:forEach items="${applications}" var="application">
-                                                            <tr>
-                                                                <td>${application.applicationId}</td>
-                                                                <td>${application.appliedDate}</td>
-                                                                <td>${application.candidate.name}</td>
-                                                                <td>${application.candidate.address}</td>
-                                                                <td>${application.job.jobTitle}</td>
-                                                                <td>${application.job.jobLocation}</td>
-                                                                <td>${application.status}</td>
-                                                                <td>
-                                                                   <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
-                                                                   <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                                   <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                               </td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Company Information Section -->
-                            <section>
-                                <h3>Company Information</h3>
-                                <div class="card company-card">
-                                    <div class="card-body">
-                                        <img src="../images/company/${company.logo}" alt="Company Logo" class="img-thumbnail" style="width: 100px; height: 100px; border-radius: 50%;">
-                                        <p>Founded On: <span>${company.foundedYear}</span></p>
-                                        <p>Company Name: <span>${company.companyName}</span></p>
-                                        <p>Location: <span>${company.companyAddress}</span></p>
-                                        <p>Website: <span>${company.companyWebsite}</span></p>
-                                        <p>Company size: <span>${company.companySize}</span></p>
-                                        <p>Company Email: <span>${company.companyEmail}</span></p>
-                                        <a href="company_profile.jsp" class="btn btn-primary">Edit Company Profile</a>
-                                    </div>
-                                </div>
-                            </section>
 
             </div>
         </div>
