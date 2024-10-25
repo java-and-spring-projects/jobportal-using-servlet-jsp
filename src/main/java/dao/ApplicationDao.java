@@ -35,7 +35,7 @@ public class ApplicationDao {
             stmt.setInt(1,application.getUser().getUserId());
             stmt.setInt(2, application.getJob().getJobId());
             stmt.setString(3, application.getFeedback());
-//            stmt.setBlob(4, application.getResume());
+            stmt.setBytes(4, application.getResume());
 
             int res= stmt.executeUpdate();
 
@@ -170,6 +170,21 @@ public class ApplicationDao {
         return null;
     }
 
+    public boolean updateApplication(int applicationId,String status)
+    {
+        String sql = "update application set status=? where application_id=?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,status);
+            stmt.setInt(2,applicationId);
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
 }

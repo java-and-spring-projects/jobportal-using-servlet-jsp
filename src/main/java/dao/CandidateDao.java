@@ -37,7 +37,7 @@ public class CandidateDao {
             stmt.setString(4, candidate.getEducation());
             stmt.setString(5, candidate.getSkills());
             stmt.setString(6, candidate.getExperience());
-            stmt.setBlob(7, candidate.getResume());
+            stmt.setBytes(7, candidate.getResume());
             int res= stmt.executeUpdate();
 
             if(res>0) {
@@ -65,7 +65,7 @@ public class CandidateDao {
                 candidate.setEducation(rs.getString("education"));
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
-                candidate.setResume(rs.getBinaryStream("resume"));
+                candidate.setResume(rs.getBytes("resume"));
                 return candidate;
             }
         } catch (Exception e) {
@@ -97,7 +97,7 @@ public class CandidateDao {
                 candidate.setEducation(rs.getString("education"));
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
-                candidate.setResume(rs.getBinaryStream("resume"));
+                candidate.setResume(rs.getBytes("resume"));
                 candidate.setUser(user);
 
                 candidates.add(candidate);

@@ -63,7 +63,7 @@
                            </div>
                            <p>Company: ${job.company.companyName}</p>
                            <p>Location: ${job.jobLocation}</p>
-                           <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">Apply</a>
+                           <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">View Details</a>
                        </div>
                    </c:forEach>
                 </div>

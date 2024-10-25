@@ -18,7 +18,7 @@ public class Candidate {
     private String skills;
     private Timestamp createdAt;
     private String experience;
-    private InputStream resume;
+    private byte[] resume;
 
     private User user;
 }

@@ -37,7 +37,7 @@ public class ApplyJobServlet extends HttpServlet {
         application.setUser(user);
         application.setJob(job);
         application.setFeedback(feedback);
-//        application.setResume(candidate.getResume());
+        application.setResume(candidate.getResume());
 
         ApplicationDao applicationDao = new ApplicationDao();
         applicationDao.addApplication(application);

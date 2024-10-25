@@ -42,7 +42,6 @@
                 <h4 class="title">All Candidates</h4>
                 <!-- Job Postings Section -->
                 <section>
-                    <h3>Your Job Postings</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">

@@ -43,9 +43,24 @@
                     <div id="application-list">
                        <section id="section-application">
                             <p>Applied on: <span>${application.appliedDate}</span></p>
-                            <p>Status: <span>${application.status}</span></p>
+                              <p>Status: <span>${application.status}</span></p>
+                          <form action="${pageContext.request.contextPath}/employer/update-application">
+                              <input type="hidden" name="applicationId" value="${application.applicationId}">
+
+                              <select name="status" id="statusSelect" onchange="toggleInterviewDate()">
+                                  <option value="">--Select Status--</option>
+                                  <option value="Pending">Pending</option>
+                                  <option value="Accepted">Accepted</option>
+                                  <option value="Rejected">Rejected</option>
+                              </select><br><br>
+
+
+                              <input type="submit" value="Update Status" class="btn btn-dark btn-sm">
+                          </form>
+
+                            <br><br>
                             <a href="view-resume?id=${application.applicationId}">Download Resume</a>
-                       </section>
+                        </section>
 
                        <section id="section-candidate">
                             <p>Candidate Name: <span>${application.candidate.name}</span></p>
@@ -68,5 +83,6 @@
             </div>
         </div>
    	</main>
+
 </body>
 </html>

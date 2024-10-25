@@ -42,17 +42,16 @@
 
 
             <div class="main-content">
-                <h4 class="title">View Jobs</h4>
+                <h4 class="title">Your Job Postings</h4>
                 <!-- Job Postings Section -->
                 <section>
-                    <h3>Your Job Postings</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <table class="table table-bordered">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-dark text-white">
                                                 <th>Job Title</th>
                                                 <th>Location</th>
                                                 <th>Date Posted</th>

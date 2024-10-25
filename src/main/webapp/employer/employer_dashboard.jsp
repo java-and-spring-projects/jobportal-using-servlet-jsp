@@ -104,53 +104,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="card stat-card">
-                                            <div class="card-header">
-                                                <h5>Interviews Scheduled</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <i class="fas fa-calendar-check"></i>
-                                                <h2>[Interviews Scheduled]</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card stat-card">
-                                            <div class="card-header">
-                                                <h5>Offers Made</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <i class="fas fa-gift"></i>
-                                                <h2>[Offers Made]</h2>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                  <div class="col-md-4">
+                                      <div class="card stat-card">
+                                          <div class="card-header">
+                                              <h5>Total Accepted Applications</h5>
+                                          </div>
+                                          <div class="card-body">
+                                              <i class="fas fa-check-circle"></i>
+                                              <h2>[Total Accepted]</h2>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="card stat-card">
+                                          <div class="card-header">
+                                              <h5>Total Rejected Applications</h5>
+                                          </div>
+                                          <div class="card-body">
+                                              <i class="fas fa-times-circle"></i>
+                                              <h2>[Total Rejected]</h2>
+                                          </div>
+                                      </div>
+                                  </div>
+
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="card stat-card">
-                                            <div class="card-header">
-                                                <h5>Total Accepted Applications</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <i class="fas fa-check-circle"></i>
-                                                <h2>[Total Accepted]</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card stat-card">
-                                            <div class="card-header">
-                                                <h5>Total Rejected Applications</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <i class="fas fa-times-circle"></i>
-                                                <h2>[Total Rejected]</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </section>
 
                             <!-- Job Postings Section -->

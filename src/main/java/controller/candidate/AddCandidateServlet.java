@@ -31,8 +31,12 @@ public class AddCandidateServlet extends HttpServlet {
         String skills = request.getParameter("skills");
         String experience = request.getParameter("experience");
         Part filePart = request.getPart("resume"); // Retrieves <input type="file">
-        InputStream inputStreamResume = filePart.getInputStream();
 
+        // Convert Part to byte[]
+        byte[] resume = new byte[(int) filePart.getSize()];
+        try (InputStream inputStream = filePart.getInputStream()) {
+            inputStream.read(resume);
+        }
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -44,7 +48,7 @@ public class AddCandidateServlet extends HttpServlet {
         candidate.setEducation(education);
         candidate.setSkills(skills);
         candidate.setExperience(experience);
-        candidate.setResume(inputStreamResume);
+        candidate.setResume(resume);
 
         CandidateDao candidateDao = new CandidateDao();
         candidateDao.addCandidate(candidate);
