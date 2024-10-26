@@ -10,7 +10,7 @@
                 <ul>
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#job-listings">Job Listings</a></li>
-                    <li><a href="#applications">My Applications</a></li>
+                    <li><a href="${pageContext.request.contextPath}/candidate/my-applications">My Applications</a></li>
                     <li><a href="#messages">Messages</a></li>
                 </ul>
 
@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#job-listings">Job Listings</a></li>
-                    <li><a href="#applications">My Applications</a></li>
+                    <li><a href="${pageContext.request.contextPath}/candidate/candidate/my-applications">My Applications</a></li>
                     <li><a href="#messages">Messages</a></li>
                 </ul>
                 <ul>

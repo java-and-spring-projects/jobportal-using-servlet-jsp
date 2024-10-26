@@ -14,6 +14,21 @@
     <%@ include file="../components/header.jsp"%>
     <%@ include file="../components/custom_toast.html"%>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        #btn-edit-profile{
+            padding: 8px 10px;
+            font-size: 12px;
+            background-color: green;
+            border-radius: 0px;
+            margin-right: 10px;
+        }
+        #btn-logout{
+            background-color: crimson;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -44,8 +59,8 @@
                         <p>Address:${candidate.address} </p>
                         <p>Skills: ${candidate.skills}</p>
                     </div>
-                    <button>Edit Profile</button>
-                    <a href="${pageContext.request.contextPath}/logout">Logout</a>
+                    <button id="btn-edit-profile">Edit Profile</button>
+                    <a href="${pageContext.request.contextPath}/logout" id="btn-logout">Logout</a>
                 </div>
             </section>
 

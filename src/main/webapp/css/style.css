@@ -290,15 +290,7 @@ footer {
     font-size: 0.9em;
     color: #666;
 }
-.candidate-dashboard2 .profile .profile-card button{
-    background: #35424a;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-left: 10px;
-    border-radius: 5px;
-}
+
 .candidate-dashboard2 .content .job-listings{
     width: 75%;
     margin: auto;
@@ -754,4 +746,101 @@ footer {
     color: red;
     font-weight: 400;
     font-size: 12px;
+}
+
+
+
+
+/**my applications**/
+.my-applications .content {
+    display: flex;
+    gap: 20px;
+    border-radius: 5px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+#job-listings{
+    width: 68%;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.my-applications .content button{
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.my-applications .content button:hover{
+    background: #2c3e50;
+}
+
+
+.my-applications .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between job cards */
+    margin-top: 40px;
+}
+.my-applications .job-card {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    height: 200px;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.my-applications .job-card:hover {
+    transform: scale(1.02);
+}
+.my-applications .job-card h3{
+    padding-left: 8px;
+    font-size: 20px;
+}
+.my-applications .job-card p{
+    padding-left: 8px;
+    font-size: 14px;
+    color:gray;
+}
+
+.my-applications .content .job-listings{
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.my-applications #job-listings .job-card .job-details{
+    display: flex;
+    justify-content: space-between;
+}
+.my-applications #job-listings .job-card .job-details .postedDate{
+    font-weight: 600;
+}
+.my-applications #btn-apply{
+    display: inline-block;
+    background: #35424a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }

@@ -1,10 +1,7 @@
 package dao;
 
 
-import model.Application;
-import model.Candidate;
-import model.Job;
-import model.User;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -114,7 +111,7 @@ public class ApplicationDao {
         String sql = "select a.*, j.*, u.*,c.* from application a \n" +
                 "join job j on a.job_id=j.job_id \n" +
                 "join user u on u.user_id=a.user_id \n" +
-                "join candidate c on c.user_id=u.user_id where application_id=?;";
+                "join candidate c on c.user_id=u.user_id where application_id=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,applicationId);
@@ -243,6 +240,70 @@ public class ApplicationDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<Application> getMyApplications(int userId) {
+        String sql = "select a.*, j.*, u.*,c.* from application a \n" +
+                "                join job j on a.job_id=j.job_id \n" +
+                "                join user u on u.user_id=a.user_id\n" +
+                "                join company c on c.employer_id=j.employer_id  \n" +
+                "                where a.user_id=?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
+            ResultSet rs = stmt.executeQuery();
+            List<Application> applications = new ArrayList<>();
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setRole(rs.getString("role"));
+                user.setPic(rs.getString("pic"));
+                user.setStatus(rs.getString("status"));
+
+                Company company = new Company();
+                company.setCompanyName(rs.getString("company_name"));
+                company.setCompanyAddress(rs.getString("company_address"));
+                company.setCompanyEmail(rs.getString("company_email"));
+                company.setCompanyWebsite(rs.getString("company_website"));
+                company.setLogo(rs.getString("logo"));
+
+
+                Job job = new Job();
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setLastDate(rs.getTimestamp("last_date"));
+                job.setCompany(company);
+
+                Application application = new Application();
+                application.setApplicationId(rs.getInt("application_id"));
+                application.setAppliedDate(rs.getTimestamp("applied_on"));
+                application.setInterviewDate(rs.getTimestamp("interview_date"));
+                application.setStatus(rs.getString("status"));
+                application.setFeedback(rs.getString("feedback"));
+                application.setResume(rs.getBytes("resume"));
+                application.setJob(job);
+                application.setUser(user);
+//                application.setCompany(company);
+                applications.add(application);
+
+            }
+            return applications;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 
