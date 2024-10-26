@@ -99,78 +99,67 @@ footer {
 
 
 /* candidate dashboard before login*/
- .candidate-dashboard1 {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    margin: auto;
-    overflow: hidden;
-}
-.candidate-dashboard1 .content {
-      flex: 1;
-      padding: 20px;
-      margin-top: 20px;
-      background: #ffffff;
-      border: 1px solid #dddddd;
-      border-radius: 5px;
-      margin-bottom: 20px;
-}
-
-
-.candidate-dashboard1 .content button{
-    background: #35424a;
+.home .content{
+    background-image: url('../images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    width: 100%;
     color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-left: 10px;
-    border-radius: 5px;
-}
-.candidate-dashboard1 .content button:hover{
-    background: #2c3e50;
-}
-.candidate-dashboard1 input[type="text"], select {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    width: 90%;
-}
-.candidate-dashboard1 .job-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* Space between job cards */
-    margin-top: 40px;
-}
-.candidate-dashboard1 .job-card {
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    padding: 20px;
-    height: 190px;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
+    opacity: 1;
 
-.candidate-dashboard1 .job-card:hover {
-    transform: scale(1.02);
+    position: relative;
+    z-index: 1;
 }
-.candidate-dashboard1 .job-card h3{
-    padding: 10px;
+.home .content .box{
+    height:85vh;
+    width: 100%;
+    position:absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 1);
+    opacity: 0.5;
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
 }
-.candidate-dashboard1 .job-card p{
-    padding: 10px;
-}
-.candidate-dashboard1 #job-listings{
+.home .content .heading{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 21;
+    color: white;
+    margin-top: 180px;
     width: 100%;
 }
-.candidate-dashboard1 #job-listings .job-card .job-details{
+.home .content .buttons{
+    margin: 20px auto;
     display: flex;
-    justify-content: space-between;
+    gap: 100px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
 }
-.candidate-dashboard1 #job-listings .job-card .job-details .postedDate{
-    font-weight: 600;
+.home .content .buttons .btn{
+    display: inline-block;
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 36px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    position: relative;
+    z-index: 100;
 }
 
 
