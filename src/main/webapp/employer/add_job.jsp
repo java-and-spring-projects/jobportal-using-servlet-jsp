@@ -57,9 +57,11 @@
                          <label for="size" class="form-label">Job Type:</label>
                           <select class="form-select" name="job_type" required>
                               <option value="" disabled selected>Select Job Type</option>
-                              <option value="full-time">Full Time</option>
-                              <option value="part-time">Part Time</option>
-                              <option value="contract">Contract</option>
+                              <option value="Full Time">Full Time</option>
+                              <option value="Part Time">Part Time</option>
+                              <option value="Contract">Contract</option>
+                              <option value="Internship">Internship</option>
+                              <option value="Remote">Remote</option>
                           </select>
                      </div>
 

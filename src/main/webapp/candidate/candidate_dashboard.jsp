@@ -8,15 +8,6 @@
     HttpSession session1 = request.getSession();
     User user = (User) session1.getAttribute("user");
 
-    CandidateDao candidateDao = new CandidateDao();
-    Candidate candidate = candidateDao.isCandidateExist(user.getUserId());
-    request.setAttribute("candidate", candidate);
-
-    JobDao jobDao = new JobDao();
-    List<Job> jobs = jobDao.getAllJobsWithCompany();
-
-    request.setAttribute("jobs", jobs);
-
 %>
 
 <!DOCTYPE html>
@@ -52,19 +43,18 @@
 
             <section id="job-listings">
 
-                <input type="text" placeholder="Enter skill / company / designation..." id="job-search" onkeyup="filterJobs()">
-
-                <form>
-                    <select name="job-type" id="job-type">
-                        <option>-Select Job Type-</option>
+                <form action="${pageContext.request.contextPath}/candidate/search-jobs" method="post">
+                    <input type="text" placeholder="Enter skill / company / designation..." id="job-search"  name="keyword">
+                    <select id="job-type" name="jobType">
+                        <option value="">-Select Job Type-</option>
                         <option value="Full Time">Full Time</option>
                         <option value="Part Time">Part Time</option>
                         <option value="Internship">Internship</option>
                         <option value="Contract">Contract</option>
                         <option value="Remote">Remote</option>
                     </select>
-                    <select name="job-location" id="job-location">
-                        <option>-Select Job Location-</option>
+                    <select id="job-location" name="jobLocation">
+                        <option value="">-Select Job Location-</option>
                         <option value="Noida">Noida</option>
                         <option value="Delhi">Delhi</option>
                         <option value="Gurugram">Gurugram</option>
@@ -81,8 +71,8 @@
                         <option value="Jaipur">Jaipur</option>
                         <option value="Lucknow">Lucknow</option>
                     </select>
-                    <select name="experience" id="experience">
-                        <option>-Select Experience-</option>
+                    <select name="experience" id="experience" name="experience">
+                        <option value="">-Select Experience-</option>
                         <option value="0">Fresher</option>
                         <option value="1">1 Year</option>
                         <option value="2">2 Years</option>
@@ -109,6 +99,7 @@
                            <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">View Details</a>
                        </div>
                    </c:forEach>
+
                 </div>
             </section>
         </div>
