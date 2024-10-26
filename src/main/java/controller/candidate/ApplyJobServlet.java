@@ -40,8 +40,18 @@ public class ApplyJobServlet extends HttpServlet {
         application.setResume(candidate.getResume());
 
         ApplicationDao applicationDao = new ApplicationDao();
-        applicationDao.addApplication(application);
 
+        boolean applicationExist = applicationDao.isApplicationExist(user.getUserId(), job.getJobId());
+
+        if(applicationExist) {
+            request.setAttribute("error", "You have already applied for this job: "+application.getJob().getJobTitle());
+            request.getRequestDispatcher("/candidate/candidate-dashboard").forward(request, response);
+            return;
+        }
+        else {
+            applicationDao.addApplication(application);
+            request.setAttribute("success", "You have successfully applied for this job: "+application.getJob().getJobTitle());
+        }
         request.getRequestDispatcher("/candidate/candidate-dashboard").forward(request, response);
 
     }

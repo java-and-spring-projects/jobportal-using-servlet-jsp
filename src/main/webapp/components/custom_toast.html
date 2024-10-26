@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/846c497550.js" crossorigin="anonymous"></script>
+    <style>
+        /* Toast container styling */
+        #toast {
+            position: fixed;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background-color: #4caf50; /* Green color for success */
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            z-index: 1000; /* Ensures toast is on top of other elements */
+            display: none;
+        }
+        /* Icon styling */
+        #toast i {
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="toast">
+    <i class="fa-regular fa-circle-check"></i>
+    This is a custom toast created by Hiteshwar
+</div>
+
+<script>
+    function showToast(content) {
+        <!-- $("#toast").html(content)    -->
+        $("#toast").html(`<i class='fa-regular fa-circle-check'></i>`+content)
+           $("#toast").fadeIn(400).delay(2000).fadeOut(400);
+    }
+</script>
+</body>
+</html>

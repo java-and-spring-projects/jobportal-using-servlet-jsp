@@ -229,5 +229,20 @@ public class ApplicationDao {
     }
 
 
+    public boolean isApplicationExist(int userId, int jobId) {
+        String sql = "select * from application where user_id=? and job_id=?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
+            stmt.setInt(2,jobId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
 

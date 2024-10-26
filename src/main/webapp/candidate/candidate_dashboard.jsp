@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal Candidate Dashboard</title>
     <%@ include file="../components/header.jsp"%>
+    <%@ include file="../components/custom_toast.html"%>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -20,6 +21,19 @@
 
     <div class="container candidate-dashboard2">
         <div class="content">
+
+            <c:if test="${not empty error}">
+                <script>
+                    showToast("${error}");
+                </script>
+            </c:if>
+
+            <c:if test="${not empty success}">
+                <script>
+                    showToast("${success}");
+                </script>
+            </c:if>
+
 
             <section id="profile">
                 <div class="profile-card">
