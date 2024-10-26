@@ -21,5 +21,4 @@ public class Application {
     private User user;
     private Job job;
     private Candidate candidate;
-    private Company company;
 }

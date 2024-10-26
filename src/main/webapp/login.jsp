@@ -18,6 +18,19 @@
     <main>
         <div class="container">
            <div class=".content">
+
+               <c:if test="${not empty error}">
+                   <script>
+                       showToast("${error}");
+                   </script>
+               </c:if>
+
+               <c:if test="${not empty success}">
+                   <script>
+                       showToast("${success}");
+                   </script>
+               </c:if>
+
                  <section id="login">
                  <h1 class="heading">Login</h1>
                    <form action="${pageContext.request.contextPath}/login" method="post">

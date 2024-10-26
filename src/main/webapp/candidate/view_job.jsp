@@ -84,7 +84,12 @@
 
                     <c:if test="${daysDifference > 0 }">
                         <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
-                        <a href="${pageContext.request.contextPath}/candidate/save-link?jobId=${job.jobId}" class="btn btn-warning">Save</a>
+                        <c:if test="${isSaved}">
+                            <a href="${pageContext.request.contextPath}/candidate/unsave-job?jobId=${job.jobId}" class="btn btn-warning">UnSave</a>
+                         </c:if>
+                         <c:if test="${!isSaved}">
+                            <a href="${pageContext.request.contextPath}/candidate/save-job?jobId=${job.jobId}" class="btn btn-warning">Save</a>
+                         </c:if>
                     </c:if>
                 </form>
 

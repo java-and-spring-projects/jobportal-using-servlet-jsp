@@ -59,14 +59,12 @@ public class LoginServlet extends HttpServlet {
                 }
             }
 
-            else {
-                response.sendRedirect("error.jsp");
-            }
 
         }
 
         else {
-            response.sendRedirect("login.jsp");
+            request.setAttribute("error", "Invalid credentials");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

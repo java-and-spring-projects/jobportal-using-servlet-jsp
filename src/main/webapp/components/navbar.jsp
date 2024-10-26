@@ -8,10 +8,13 @@
         <c:choose>
              <c:when test="${not empty sessionScope.user.username}">
                 <ul>
-                    <li><a href="#profile">Profile</a></li>
-                    <li><a href="#job-listings">Job Listings</a></li>
+                    <li><a href="${pageContext.request.contextPath}/candidate/candidate-dashboard">Dashboard</a></li>
+
                     <li><a href="${pageContext.request.contextPath}/candidate/my-applications">My Applications</a></li>
+                    <li><a href="${pageContext.request.contextPath}/candidate/all-saved-jobs">Saved Jobs</a></li>
                     <li><a href="#messages">Messages</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                 </ul>
 
             </c:when>

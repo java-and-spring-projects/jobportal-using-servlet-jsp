@@ -1,12 +1,9 @@
 package controller.candidate;
 
-import dao.CandidateDao;
-import dao.CompanyDao;
-import dao.JobDao;
+
 import dao.SavedJobDao;
-import model.Candidate;
-import model.Company;
 import model.Job;
+import model.SavedJob;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -18,23 +15,20 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/candidate/candidate-dashboard")
-public class CandidateDashboardServlet extends HttpServlet {
+@WebServlet("/candidate/all-saved-jobs")
+public class AllSavedJobServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        CandidateDao candidateDao = new CandidateDao();
-        Candidate candidate = candidateDao.isCandidateExist(user.getUserId());
-        request.setAttribute("candidate", candidate);
-
-        JobDao jobDao = new JobDao();
-        List<Job> jobs = jobDao.getAllJobsWithCompany();
+        SavedJobDao savedJobDao = new SavedJobDao();
+        List<Job> jobs = savedJobDao.getAllSavedJobs(user.getUserId());
 
         request.setAttribute("jobs", jobs);
 
 
-        request.getRequestDispatcher( "/candidate/candidate_dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/candidate/all_saved_jobs.jsp").forward(request, response);
+
     }
 }

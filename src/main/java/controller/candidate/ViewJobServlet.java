@@ -2,6 +2,7 @@ package controller.candidate;
 
 
 import dao.JobDao;
+import dao.SavedJobDao;
 import model.Job;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ public class ViewJobServlet extends HttpServlet {
 
         JobDao jobDao = new JobDao();
         Job job = jobDao.getJobById(jobId);
-
+        request.setAttribute("job", job);
 
         /***** Calculating the difference in days between current date and lastDate *******/
        //get lastDate of job
@@ -45,11 +46,14 @@ public class ViewJobServlet extends HttpServlet {
 
         // Calculate the difference in days
         long daysDifference = ChronoUnit.DAYS.between(currentDate, lastDate);
-
-
-
-        request.setAttribute("job", job);
         request.setAttribute("daysDifference", daysDifference);
+
+
+        SavedJobDao savedJobDao = new SavedJobDao();
+        boolean isSaved = savedJobDao.isSaved(jobId);
+        request.setAttribute("isSaved", isSaved);
+
+
         request.getRequestDispatcher("/candidate/view_job.jsp").forward(request, response);
 
     }
