@@ -187,12 +187,10 @@ footer {
 }
 #job-listings{
     width: 68%;
-    background: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 5px;
     padding: 20px;
     margin-top: 20px;
-    background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
@@ -340,6 +338,7 @@ footer {
     border-radius: 5px;
     font-size: 14px;
 }
+
 
 
 
@@ -750,4 +749,9 @@ footer {
 }
 .apply-job .job-title{
     margin-bottom: 20px;
+}
+.apply-job .days-left{
+    color: red;
+    font-weight: 400;
+    font-size: 12px;
 }

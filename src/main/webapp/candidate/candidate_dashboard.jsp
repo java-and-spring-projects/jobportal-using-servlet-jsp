@@ -101,7 +101,7 @@
                        <div class="job-card" data-type="Software Engineer">
                            <div class="job-details">
                                <h3>${job.jobTitle}</h3>
-                               <p>Posted on:  <span class="postedDate"><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></span></p>
+                                <p>Last Date:  <span class="postedDate"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
                            </div>
                            <p>Company: ${job.company.companyName}</p>
                            <p>Location: ${job.jobLocation}</p>

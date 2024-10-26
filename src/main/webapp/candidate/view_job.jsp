@@ -4,6 +4,7 @@
 <%@ page isELIgnored="false" %>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +54,13 @@
                 <p><i class="fa-solid fa-money-bill-1"></i> <span>${job.jobSalary} p.a.</span></p>
                 <p>Posted on: <span class="postedDate"><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></span></p>
                 <p>Last date to apply: <span class="lastDateToApply"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
+                <c:if test="${daysDifference >= 0 }">
+                    <p class="days-left">${daysDifference} days left to apply</p>
+                </c:if>
+                <c:if test="${daysDifference < 0 }">
+                    <p class="days-left">Deadline passed</p>
+                </c:if>
+
                  <hr>
                  <div class="requirements">
                     <p class="title">Requirements</p>
@@ -74,8 +82,10 @@
                         <label for="floatingTextarea2">Feedback</label>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
-                    <a href="${pageContext.request.contextPath}/candidate/save-link?jobId=${job.jobId}" class="btn btn-warning">Save</a>
+                    <c:if test="${daysDifference > 0 }">
+                        <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
+                        <a href="${pageContext.request.contextPath}/candidate/save-link?jobId=${job.jobId}" class="btn btn-warning">Save</a>
+                    </c:if>
                 </form>
 
             </section>
@@ -104,7 +114,7 @@
                         <p><i class="fa fa-envelope"></i> <span>${job.company.companyEmail}</span></p>
                         <p><i class="fa fa-globe"></i> <span>${job.company.companyWebsite}</span></p>
                         <p>Company Size: <span>${job.company.companySize}</span></p>
-                        <p>Company founded: <span>${job.company.foundedYear}</span></p>
+                        <p>Founded On: <span>${job.company.foundedYear}</span></p>
                         <p>Company Type: <span>${job.company.companyType}</span></p>
                     </div>
                 </div>
