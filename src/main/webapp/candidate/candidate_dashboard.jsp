@@ -4,11 +4,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.* " %>
 
-<%
-    HttpSession session1 = request.getSession();
-    User user = (User) session1.getAttribute("user");
-
-%>
 
 <!DOCTYPE html>
 <html lang="en">
