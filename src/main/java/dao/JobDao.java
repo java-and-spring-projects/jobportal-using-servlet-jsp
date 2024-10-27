@@ -301,4 +301,40 @@ public class JobDao {
         }
     }
 
+    public Job viewJobDetails(int jobId, int userId) {
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from job where job_id = ? and employer_id = ?");
+            preparedStatement.setInt(1, jobId);
+            preparedStatement.setInt(2, userId);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                Job job = new Job();
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                job.setLastDate(rs.getTimestamp("last_date"));
+
+                return job;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

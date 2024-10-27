@@ -70,7 +70,7 @@
                                                   <td><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></td>
                                                   <td>${job.jobStatus}</td>
                                                   <td>
-                                                       <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
+                                                       <a href="view-job-details?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
                                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                                    </td>
