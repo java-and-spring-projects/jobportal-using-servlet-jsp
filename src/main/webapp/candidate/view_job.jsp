@@ -83,7 +83,13 @@
                     </div>
 
                     <c:if test="${daysDifference > 0 }">
-                        <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
+                        <c:if test="${job.jobStatus == 'Open'}">
+                            <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
+                        </c:if>
+                        <c:if test="${job.jobStatus == 'Close'}">
+                            <p class="text-danger">You cannot apply for this job. Because this job is closed</p>
+                            <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply" disabled>
+                        </c:if>
                         <c:if test="${isSaved}">
                             <a href="${pageContext.request.contextPath}/candidate/unsave-job?jobId=${job.jobId}" class="btn btn-warning">UnSave</a>
                          </c:if>
@@ -97,11 +103,17 @@
 
             <aside>
                 <div class="job-summary card">
-                    <div class="card-header text-center text-white bg-success">
+                    <div class="card-header text-center text-white bg-secondary">
                         <h5>Job Summary</h5>
                     </div>
                     <div class="card-body">
-                        <p>Status: <span>${job.jobStatus}</span></p>
+                        <c:if test="${job.jobStatus == 'Open'}">
+                             <p>Status: <span class="badge bg-success">${job.jobStatus}</span></p>
+                        </c:if>
+                        <c:if test="${job.jobStatus == 'Close'}">
+                            <p>Status: <span class="badge bg-danger">${job.jobStatus}</span></p>
+                        </c:if>
+
                         <p>Job type: <span>${job.jobType}</span></p>
                         <p>Education: <span>${job.education}</span></p>
                          <p>Experience: <span>${job.experience} Years</span></p>
@@ -109,7 +121,7 @@
                     </div>
                 </div>
                 <div class="company-info card">
-                    <div class="card-header text-center text-white bg-success">
+                    <div class="card-header text-center text-white bg-secondary">
                         <h5>Company Information</h5>
                     </div>
                     <div class="card-body">

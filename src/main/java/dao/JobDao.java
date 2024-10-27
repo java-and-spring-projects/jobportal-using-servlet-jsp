@@ -361,4 +361,16 @@ public class JobDao {
             return false;
         }
     }
+
+    public boolean deleteJob(int jobId) {
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("delete from job where job_id = ?");
+            preparedStatement.setInt(1, jobId);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

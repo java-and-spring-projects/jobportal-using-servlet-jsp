@@ -73,8 +73,8 @@
                         <p>Applied on: <span>${application.appliedDate}</span></p>
                         <p>Status: <span>${application.status}</span></p>
                         <p>Resume: <span><a href="${pageContext.request.contextPath}/employer/view-resume?id=${application.applicationId}" target="_blank">Download Resume</a></span></p>
-                        <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Accepted" class="btn btn-success btn-sm">Accept</a>
-                        <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Rejected" class="btn btn-danger btn-sm">Reject</a>
+                        <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Accepted" class="btn btn-sm btn-success"> <i class="fa fa-check"></i> Accept</a>
+                        <a href="${pageContext.request.contextPath}/employer/update-application?id=${application.applicationId}&status=Rejected" class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i> Reject</a>
 
                     </div>
                     <div class="candidate-job-details">
@@ -100,7 +100,10 @@
                                 <p>Vacancy: <span>${application.job.vacancy}</span></p>
                             </div>
                         </div>
+
                     </div>
+                    <a href="delete-application?id=${application.applicationId}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this application?')">Delete Application</a>
+
                 </section>
             </div>
         </div>

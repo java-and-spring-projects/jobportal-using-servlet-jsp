@@ -64,7 +64,7 @@ public class EditJobServlet extends HttpServlet {
         JobDao jobDao = new JobDao();
         jobDao.updateJob(job);
 
-        response.sendRedirect(request.getContextPath() + "/employer/view_jobs.jsp");
+        response.sendRedirect(request.getContextPath() + "/employer/view-all-jobs");
     }
 
 }

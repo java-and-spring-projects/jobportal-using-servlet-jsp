@@ -37,6 +37,9 @@
             left: 34%;
             gap: 10px;
         }
+        .badge{
+            padding: 8px 10px;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +132,13 @@
                            <div class="job-details">
                                <h3>${job.jobTitle}</h3>
                                 <p>Last Date:  <span class="postedDate"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
+
+                                <c:if test="${job.jobStatus == 'Open'}">
+                                    <span class="badge bg-success">Open</span>
+                                </c:if>
+                                <c:if test="${job.jobStatus == 'Close'}">
+                                    <span class="badge bg-danger">Closed</span>
+                                </c:if>
                            </div>
                            <p>Company: ${job.company.companyName}</p>
                            <p>Location: ${job.jobLocation}</p>

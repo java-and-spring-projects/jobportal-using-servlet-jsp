@@ -85,6 +85,7 @@ public class ApplicationDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
+                job.setLastDate(rs.getTimestamp("last_date"));
 
 
                 Application application = new Application();
@@ -304,6 +305,20 @@ public class ApplicationDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean deleteApplication(int applicationId) {
+        String sql = "delete from application where application_id=?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,applicationId);
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
 

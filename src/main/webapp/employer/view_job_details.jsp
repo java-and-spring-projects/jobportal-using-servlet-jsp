@@ -144,7 +144,7 @@
 
                        <div class="buttons">
                            <a href="edit-job?id=${job.jobId}" class="btn btn-primary btn-success">Edit</a>
-                           <a href="delete-job" class="btn btn-primary btn-danger">Delete</a>
+                           <a href="delete-job?id=${job.jobId}" class="btn btn-primary btn-danger" onclick="return confirm('Are you sure you want to delete this job?')">Delete</a>
                        </div>
                 </section>
             </div>
