@@ -4,17 +4,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.*" %>
 
-<%
-    HttpSession session1 = request.getSession();
-    User user = (User) session1.getAttribute("user");
-
-    JobDao jobDao = new JobDao();
-    List<Job> jobs = jobDao.getJobsByUserId(user.getUserId());
-
-    request.setAttribute("jobs", jobs);
-
-%>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +32,12 @@
 
 
             <div class="main-content">
+                <c:if test="${not empty success}">
+                      <script>
+                          showToast("${success}");
+                      </script>
+                  </c:if>
+
                 <h4 class="title">Your Job Postings</h4>
                 <!-- Job Postings Section -->
                 <section>
@@ -68,10 +63,18 @@
                                                   <td>${job.jobLocation}</td>
                                                   <td><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></td>
                                                   <td><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></td>
-                                                  <td>${job.jobStatus}</td>
+                                                  <td>
+                                                    <c:if test="${job.jobStatus == 'Open'}">
+                                                        <p class="text-success"><i class="fas fa-check text-success"></i> ${job.jobStatus}</p>
+
+                                                    </c:if>
+                                                    <c:if test="${job.jobStatus == 'Close'}">
+                                                        <span  <p class="text-danger"><i class="fas fa-times text-danger"></i> ${job.jobStatus}</p>
+
+                                                    </c:if>
                                                   <td>
                                                        <a href="view-job-details?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
-                                                       <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                                       <a href="edit-job?id=${job.jobId}" class="btn btn-primary btn-sm">Edit</a>
                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                                    </td>
                                               </tr>

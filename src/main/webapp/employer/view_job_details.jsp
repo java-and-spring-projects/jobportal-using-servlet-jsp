@@ -143,8 +143,8 @@
                      </table>
 
                        <div class="buttons">
-                           <a href="view_job.jsp" class="btn btn-primary btn-success">Edit</a>
-                           <a href="view_job.jsp" class="btn btn-primary btn-danger">Delete</a>
+                           <a href="edit-job?id=${job.jobId}" class="btn btn-primary btn-success">Edit</a>
+                           <a href="delete-job" class="btn btn-primary btn-danger">Delete</a>
                        </div>
                 </section>
             </div>

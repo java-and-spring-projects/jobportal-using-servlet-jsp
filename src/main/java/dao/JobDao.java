@@ -337,4 +337,28 @@ public class JobDao {
             return null;
         }
     }
+
+    public boolean updateJob(Job job) {
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("update job set job_title = ?, job_description = ?, location = ?, salary = ?, job_type = ?, education = ?, experience = ?, requirements = ?, responsibilities = ?, benefits = ?, vacancy = ?, status = ? where job_id = ?");
+            preparedStatement.setString(1, job.getJobTitle());
+            preparedStatement.setString(2, job.getJobDescription());
+            preparedStatement.setString(3, job.getJobLocation());
+            preparedStatement.setString(4, job.getJobSalary());
+            preparedStatement.setString(5, job.getJobType());
+            preparedStatement.setString(6, job.getEducation());
+            preparedStatement.setString(7, job.getExperience());
+            preparedStatement.setString(8, job.getRequirements());
+            preparedStatement.setString(9, job.getResponsibilities());
+            preparedStatement.setString(10, job.getBenefits());
+            preparedStatement.setString(11, job.getVacancy());
+            preparedStatement.setString(12, job.getJobStatus());
+            preparedStatement.setInt(13, job.getJobId());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

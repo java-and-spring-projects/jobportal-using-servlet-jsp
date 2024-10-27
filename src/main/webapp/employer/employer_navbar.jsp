@@ -18,7 +18,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/employer/add_job.jsp"><i class="fas fa-plus-circle"></i> Post Job</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_jobs.jsp"><i class="fas fa-briefcase"></i> View Jobs</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view-all-jobs"><i class="fas fa-briefcase"></i> View Jobs</a>
         </li><hr>
 
 
