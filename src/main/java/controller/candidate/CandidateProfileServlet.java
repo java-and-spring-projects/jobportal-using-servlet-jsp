@@ -1,11 +1,10 @@
 package controller.candidate;
 
+
 import dao.CandidateDao;
-import dao.CompanyDao;
 import dao.JobDao;
 import dao.SavedJobDao;
 import model.Candidate;
-import model.Company;
 import model.Job;
 import model.User;
 
@@ -16,25 +15,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-@WebServlet("/candidate/candidate-dashboard")
-public class CandidateDashboardServlet extends HttpServlet {
+@WebServlet("/candidate/candidate-profile")
+public class CandidateProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
         CandidateDao candidateDao = new CandidateDao();
-        Candidate candidate = candidateDao.isCandidateExist(user.getUserId());
+        Candidate candidate = candidateDao.candidateProfile(user.getUserId());
         request.setAttribute("candidate", candidate);
+        request.setAttribute("user", user);
 
 
-        JobDao jobDao = new JobDao();
-        List<Job> jobs = jobDao.getAllJobsWithCompany();
-        request.setAttribute("jobs", jobs);
+        request.getRequestDispatcher("/candidate/candidate_profile.jsp").forward(request, response);
 
-
-        request.getRequestDispatcher( "/candidate/candidate_dashboard.jsp").forward(request, response);
     }
 }

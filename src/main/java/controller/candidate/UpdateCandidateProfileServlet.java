@@ -2,9 +2,7 @@ package controller.candidate;
 
 
 import dao.CandidateDao;
-import dao.CompanyDao;
 import model.Candidate;
-import model.Company;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -16,47 +14,49 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@WebServlet("/candidate/register-candidate")
+@WebServlet("/candidate/update-candidate-profile")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024,  // 1 MB
         maxFileSize = 10 * 1024 * 1024,   // 10 MB
         maxRequestSize = 20 * 1024 * 1024  // 20 MB
 )
-public class AddCandidateServlet extends HttpServlet {
+public class UpdateCandidateProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String bio = request.getParameter("bio");
         String name = request.getParameter("name");
         String address = request.getParameter("address");
-        String education = request.getParameter("education");
+        String phone = request.getParameter("phone");
         String skills = request.getParameter("skills");
         String experience = request.getParameter("experience");
+        String education = request.getParameter("education");
         Part filePart = request.getPart("resume"); // Retrieves <input type="file">
 
-        // Convert Part to byte[]
-        byte[] resume = new byte[(int) filePart.getSize()];
-        try (InputStream inputStream = filePart.getInputStream()) {
-            inputStream.read(resume);
-        }
+        byte[] resume=null;
+       if(filePart != null){
+           // Convert Part to byte[]
+           resume = new byte[(int) filePart.getSize()];
+           try (InputStream inputStream = filePart.getInputStream()) {
+               inputStream.read(resume);
+           }
+       }
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
         Candidate candidate = new Candidate();
-        candidate.setUser(user);
+        candidate.setBio(bio);
         candidate.setName(name);
         candidate.setAddress(address);
-        candidate.setEducation(education);
+        candidate.setPhone(phone);
         candidate.setSkills(skills);
         candidate.setExperience(experience);
+        candidate.setEducation(education);
         candidate.setResume(resume);
-        candidate.setPhone(user.getPhone());
 
         CandidateDao candidateDao = new CandidateDao();
-        candidateDao.addCandidate(candidate);
-        request.setAttribute("success", "Candidate added successfully");
+        candidateDao.updateCandidate(candidate, user.getUserId());
 
-//        request.getRequestDispatcher("/candidate/candidate-dashboard").forward(request, response);
-
-        response.sendRedirect(request.getContextPath() + "/candidate/candidate-dashboard");
+        response.sendRedirect(request.getContextPath() + "/candidate/candidate-profile");
     }
 }

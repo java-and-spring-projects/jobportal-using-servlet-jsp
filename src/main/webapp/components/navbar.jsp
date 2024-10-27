@@ -12,19 +12,13 @@
 
                     <li><a href="${pageContext.request.contextPath}/candidate/my-applications">My Applications</a></li>
                     <li><a href="${pageContext.request.contextPath}/candidate/all-saved-jobs">Saved Jobs</a></li>
-                    <li><a href="#messages">Messages</a></li>
-                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="${pageContext.request.contextPath}/candidate/candidate-profile"><i class="fas fa-user-circle"></i> ${sessionScope.user.username}</a></li>
                     <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                 </ul>
 
             </c:when>
             <c:otherwise>
-                <ul>
-                    <li><a href="#profile">Profile</a></li>
-                    <li><a href="#job-listings">Job Listings</a></li>
-                    <li><a href="${pageContext.request.contextPath}/candidate/candidate/my-applications">My Applications</a></li>
-                    <li><a href="#messages">Messages</a></li>
-                </ul>
+
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
                     <li><a href="${pageContext.request.contextPath}/login">Login</a></li>

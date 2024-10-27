@@ -15,3 +15,4 @@
 
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/846c497550.js" crossorigin="anonymous"></script>
+<%@ include file="custom_toast.html"%>

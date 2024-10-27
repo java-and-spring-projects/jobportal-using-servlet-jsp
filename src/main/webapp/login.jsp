@@ -15,6 +15,7 @@
 <body>
     <%@ include file="../components/navbar.jsp"%>
 
+
     <main>
         <div class="container">
            <div class=".content">

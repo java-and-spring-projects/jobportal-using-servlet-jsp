@@ -21,10 +21,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal User Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <%@ include file="../components/header.jsp"%>
     <style>
-
-
-
+        .home{
+            width: 100%;
+        }
 
     </style>
 </head>
@@ -32,13 +33,25 @@
 
     <%@ include file="../components/navbar.jsp"%>
 
-    <div class="container home">
+    <div class="home">
         <div class="content">
+             <c:if test="${not empty error}">
+                   <script>
+                       showToast("${error}");
+                   </script>
+               </c:if>
+
+               <c:if test="${not empty success}">
+                   <script>
+                       showToast("${success}");
+                   </script>
+               </c:if>
+
             <div class="box">
                 <h2 class="heading">The Easiest Way To Find Your Dream Job</h2>
                 <div class="buttons">
-                    <a href="apply_job.jsp" class="btn btn-apply">Apply for Job</a>
-                    <a href="post_job.jsp" class="btn btn-post">Post a Job</a>
+                    <a href="${pageContext.request.contextPath}/login" class="btn btn-apply">Apply for Job</a>
+                    <a href="${pageContext.request.contextPath}/login" class="btn btn-post">Post a Job</a>
                 </div>
             </div>
         </div>

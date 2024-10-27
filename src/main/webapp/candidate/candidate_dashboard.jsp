@@ -21,12 +21,21 @@
             background-color: green;
             border-radius: 0px;
             margin-right: 10px;
+            color: white;
         }
         #btn-logout{
             background-color: crimson;
             padding: 8px 10px;
             font-size: 12px;
             color: white;
+        }
+        .profile-img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            left: 34%;
+            gap: 10px;
         }
     </style>
 </head>
@@ -52,14 +61,17 @@
 
             <section id="profile">
                 <div class="profile-card">
-                    <img src="${pageContext.request.contextPath}/images/users/${sessionScope.user.pic}" alt="User Avatar" class="avatar">
+                    <div class="profile-img">
+                        <img src="${pageContext.request.contextPath}/images/users/${sessionScope.user.pic}" alt="User Avatar" class="avatar">
+                    </div>
                     <div class="profile-info">
-                        <h3>${sessionScope.user.username}</h3>
+                        <h3>${candidate.name}</h3>
+                        <p>Username: ${sessionScope.user.username}</p>
                         <p>Email: ${sessionScope.user.email}</p>
                         <p>Address:${candidate.address} </p>
                         <p>Skills: ${candidate.skills}</p>
                     </div>
-                    <button id="btn-edit-profile">Edit Profile</button>
+                    <a href="${pageContext.request.contextPath}/candidate/candidate-profile" id="btn-edit-profile">Edit Profile</a>
                     <a href="${pageContext.request.contextPath}/logout" id="btn-logout">Logout</a>
                 </div>
             </section>

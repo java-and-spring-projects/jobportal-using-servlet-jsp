@@ -1,11 +1,7 @@
-package controller.employer;
+package controller.candidate;
 
-
-import dao.ApplicationDao;
-import model.Application;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@WebServlet("/employer/view-resume")
+@WebServlet("/candidate/view-resume")
 public class ViewResumeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,7 +22,7 @@ public class ViewResumeServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal", "root", "root");
-            PreparedStatement stmt = connection.prepareStatement("select * from application where application_id = ?");
+            PreparedStatement stmt = connection.prepareStatement("select * from candidate where user_id = ?");
             stmt.setInt(1, id);
             ResultSet rs=stmt.executeQuery();
 
