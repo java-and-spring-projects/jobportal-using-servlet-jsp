@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
 
 <nav class="sidebar">
-    <h4>Employer Dashboard</h4>
+    <h4> Employer Dashboard</h4>
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link active" href="${pageContext.request.contextPath}/employer/employer-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>

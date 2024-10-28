@@ -119,7 +119,7 @@
 
         <div class="content view-job-details">
             <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
+                <h4>Welcome, <span style="font-weight: bold"> ${sessionScope.user.username}</span></h4>
             </div>
 
 
