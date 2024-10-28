@@ -12,7 +12,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/employer/company-details"><i class="fas fa-building"></i> Company Details</a>
         </li>
          <li>
-            <a class="nav-link" href="${pageContext.request.contextPath}/employer/employer_profile.jsp"><i class="fas fa-user"></i>Employer Profile</a>
+            <a class="nav-link text-capitalize bg-danger" href="${pageContext.request.contextPath}/employer/employer_profile.jsp"><i class="fas fa-user-circle"></i> ${sessionScope.user.username}</a>
         <hr>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/employer/add_job.jsp"><i class="fas fa-plus-circle"></i> Post Job</a>
@@ -36,3 +36,4 @@
         </li>
     </ul>
 </nav>
+

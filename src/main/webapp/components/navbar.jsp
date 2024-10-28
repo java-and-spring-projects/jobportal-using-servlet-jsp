@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <header class="header-main">
-    <a href="${pageContext.request.contextPath}/candidate/candidate-dashboard"><img src="https://cdn-icons-png.freepik.com/512/942/942749.png" alt="Job Portal Logo" class="logo" height="50px"></a>
+    <a href="${pageContext.request.contextPath}/" id="logo"><span id="part1">job</span><span id="part2">Portal</span></a>
     <nav>
         <c:choose>
              <c:when test="${not empty sessionScope.user.username}">

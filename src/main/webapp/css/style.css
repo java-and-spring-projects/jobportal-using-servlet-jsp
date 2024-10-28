@@ -19,14 +19,17 @@ body {
 
 
 
-/*** Navbar ***/
+
 .header-main {
-    background: #2c3e50;
-    color: #ffffff;
     padding: 20px;
     display: flex;
     align-items: center;
     width: 100%;
+    background-color: #2c3e50;
+    height: 60px;
+}
+.header-main a{
+    text-decoration: none;
 }
 .header-main nav{
     display: flex;
@@ -57,6 +60,19 @@ body {
     text-decoration: none;
     color: red;
 }
+#logo{
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#logo #part1{
+    color: red;
+}
+#logo #part2{
+    font-size: 2.2rem;
+    font-weight:100;
+}
+
 
 
 
@@ -403,7 +419,6 @@ footer {
     width: 17%;
     height: 100vh;
     padding: 20px;
-    margin-top: 10px;
     position:absolute;
     top: 0;
     left: 0;

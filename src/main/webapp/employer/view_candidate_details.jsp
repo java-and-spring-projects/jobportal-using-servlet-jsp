@@ -15,24 +15,25 @@
         body {
             background-color: #f8f9fa;
         }
-       .view-job-details{
-            width: 80%;
-            position: absolute;
-            right: 1%;
-            top:0;
-        }
-        .view-job-details .header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
-            background-color: skyblue;
-            margin-top: 10px;
-            color: yellow;
-            font-size: 30px;
-            font-weight: 600;
-        }
+        .view-job-details{
+                width: 80%;
+                position: absolute;
+                right: 1%;
+                top:0;
+            }
+            .view-job-details .header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 1px solid #ddd;
+                background-color: skyblue;
+                margin-top: 10px;
+                color: yellow;
+                font-size: 30px;
+                font-weight: 600;
+            }
+
         .container {
             display: flex;
             justify-content: center;
@@ -118,10 +119,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-job-details">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold"> ${sessionScope.user.username}</span></h4>
-            </div>
-
 
             <div class="main-content ">
                  <div class="container">
