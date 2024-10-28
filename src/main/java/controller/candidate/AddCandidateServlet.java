@@ -49,8 +49,6 @@ public class AddCandidateServlet extends HttpServlet {
         candidate.setSkills(skills);
         candidate.setExperience(experience);
         candidate.setResume(resume);
-        candidate.setPhone(user.getPhone());
-        candidate.setPic(user.getPic());
 
         CandidateDao candidateDao = new CandidateDao();
         candidateDao.addCandidate(candidate);

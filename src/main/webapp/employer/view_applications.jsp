@@ -48,7 +48,7 @@
                         <div id="application-list">
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr class="bg-dark text-white">
+                                    <tr class="bg-secondary text-white">
                                         <th>Application Id</th>
                                         <th>Applied date</th>
                                         <th>Job Deadline</th>

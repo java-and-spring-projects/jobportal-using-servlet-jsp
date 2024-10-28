@@ -34,7 +34,7 @@
 
         <div class="content view-applications">
             <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
+                <h4>Welcome, <span style="font-weight: bold;text-transform: capitalize">${sessionScope.user.username}</span></h4>
             </div>
 
 
@@ -48,7 +48,7 @@
                                 <div class="card-body">
                                     <table class="table table-bordered">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-secondary text-white">
                                                 <th>Candidate Id</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
@@ -58,6 +58,7 @@
                                                 <th>Education</th>
                                                 <th>Experience</th>
                                                 <th>Status</th>
+                                                <th>Resume</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -73,11 +74,12 @@
                                                   <td>${candidate.education}</td>
                                                   <td>${candidate.experience} Years</td>
                                                   <td>${candidate.user.status}</td>
-                                                  <td>
-                                                       <a href="view_job.jsp?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
-                                                       <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                       <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                  <td class="text-center"><a href="${pageContext.request.contextPath}/employer/candidate-resume?id=${candidate.candidateId}" target="_blank"> <i class="fas fa-download"></i> </a></td>
+                                                  <td style="width: 200px">
+                                                       <a href="view-candidate-details?id=${candidate.candidateId}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> View</a>
+
                                                    </td>
+
                                               </tr>
                                           </c:forEach>
 

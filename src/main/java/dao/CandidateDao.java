@@ -26,7 +26,7 @@ public class CandidateDao {
     }
 
     public boolean addCandidate(Candidate candidate) {
-        String sql = "INSERT INTO Candidate (user_id, name, address, education, skills, experience, resume,pic, phone ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Candidate (user_id, name, address, education, skills, experience, resume ) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -38,8 +38,6 @@ public class CandidateDao {
             stmt.setString(5, candidate.getSkills());
             stmt.setString(6, candidate.getExperience());
             stmt.setBytes(7, candidate.getResume());
-            stmt.setString(8, candidate.getPic());
-            stmt.setString(9, candidate.getPhone());
             int res= stmt.executeUpdate();
 
             if(res>0) {
@@ -68,8 +66,7 @@ public class CandidateDao {
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
                 candidate.setResume(rs.getBytes("resume"));
-                candidate.setPic(rs.getString("pic"));
-                candidate.setPhone(rs.getString("phone"));
+
                 return candidate;
             }
         } catch (Exception e) {
@@ -102,8 +99,7 @@ public class CandidateDao {
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
                 candidate.setResume(rs.getBytes("resume"));
-                candidate.setPic(rs.getString("pic"));
-                candidate.setPhone(rs.getString("phone"));
+
                 candidate.setUser(user);
 
                 candidates.add(candidate);
@@ -116,12 +112,15 @@ public class CandidateDao {
     }
 
     public Candidate candidateProfile(int userId) {
-        String sql = "SELECT * FROM Candidate WHERE user_id = ?";
+        String sql = "SELECT c.*, u.phone FROM Candidate c join User u on c.user_id = u.user_id WHERE c.user_id = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+                User user = new User();
+                user.setPhone(rs.getString("phone"));
+
                 Candidate candidate = new Candidate();
                 candidate.setCandidateId(rs.getInt("candidate_id"));
                 candidate.setName(rs.getString("name"));
@@ -131,34 +130,33 @@ public class CandidateDao {
                 candidate.setExperience(rs.getString("experience"));
                 candidate.setResume(rs.getBytes("resume"));
                 candidate.setBio(rs.getString("bio"));
-                candidate.setPhone(rs.getString("phone"));
-                candidate.setPic(rs.getString("pic"));
+                candidate.setUser(user);
+
                 return candidate;
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
         return null;
     }
 
-    public boolean updateCandidate(Candidate candidate, int userId) {
-        String sql = "UPDATE Candidate SET bio = ?, name = ?, address = ?, phone = ?, skills = ?, experience = ?, education = ?, resume = ? WHERE user_id = ?";
+    public boolean updateCandidate(Candidate candidate, User user) {
+        String sql = "UPDATE Candidate SET bio = ?, name = ?, address = ?, skills = ?, experience = ?, education = ?, resume = ? WHERE user_id = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, candidate.getBio());
             stmt.setString(2, candidate.getName());
             stmt.setString(3, candidate.getAddress());
-            stmt.setString(4, candidate.getPhone());
-            stmt.setString(5, candidate.getSkills());
-            stmt.setString(6, candidate.getExperience());
-            stmt.setString(7, candidate.getEducation());
-            stmt.setBytes(9, candidate.getResume());
-            stmt.setInt(9, userId);
+            stmt.setString(4, candidate.getSkills());
+            stmt.setString(5, candidate.getExperience());
+            stmt.setString(6, candidate.getEducation());
+            stmt.setBytes(7, candidate.getResume());
+            stmt.setInt(8, user.getUserId());
             int res = stmt.executeUpdate();
 
             PreparedStatement stmt2 = con.prepareStatement("UPDATE User SET phone = ? WHERE user_id = ?");
-            stmt2.setString(1, candidate.getPhone());
-            stmt2.setInt(2, userId);
+            stmt2.setString(1, candidate.getUser().getPhone());
+            stmt2.setInt(2, user.getUserId());
             int res2 = stmt2.executeUpdate();
 
             if (res > 0 && res2 > 0) {
@@ -171,5 +169,39 @@ public class CandidateDao {
         }
         return false;
     }
+
+    public Candidate getCandidate(int candidateId) {
+        String sql = "SELECT c.*, u.* FROM Candidate c join User u on c.user_id = u.user_id WHERE candidate_id = ?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, candidateId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setEmail(rs.getString("email"));
+                user.setCreatedAt(rs.getString("created_on"));
+                user.setPic(rs.getString("pic"));
+                user.setStatus(rs.getString("status"));
+                user.setPhone(rs.getString("phone"));
+
+                Candidate candidate = new Candidate();
+                candidate.setCandidateId(rs.getInt("candidate_id"));
+                candidate.setName(rs.getString("name"));
+                candidate.setAddress(rs.getString("address"));
+                candidate.setEducation(rs.getString("education"));
+                candidate.setSkills(rs.getString("skills"));
+                candidate.setExperience(rs.getString("experience"));
+                candidate.setResume(rs.getBytes("resume"));
+                candidate.setBio(rs.getString("bio"));
+
+                candidate.setUser(user);
+                return candidate;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 

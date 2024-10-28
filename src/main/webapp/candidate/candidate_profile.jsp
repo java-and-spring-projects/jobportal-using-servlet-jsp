@@ -199,7 +199,7 @@
                     </div>
                     <div class="profile-skills">
                         <h3>Phone</h3>
-                        <input type="text" class="form-control" id="skills" name="phone" value="${candidate.phone}" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="skills" name="phone" value="${candidate.user.phone}" aria-describedby="emailHelp">
                     </div>
 
                     <div class="profile-skills">

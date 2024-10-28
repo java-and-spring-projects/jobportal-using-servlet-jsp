@@ -20,8 +20,6 @@ public class Candidate {
     private String experience;
     private byte[] resume;
     private String bio;
-    private String pic;
-    private String phone;
 
     private User user;
 }

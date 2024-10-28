@@ -51,7 +51,7 @@
                                     <div class="card-body">
                                         <table class="table table-bordered">
                                             <thead>
-                                                <tr class="bg-dark text-white">
+                                                <tr class="bg-secondary text-white">
                                                     <th>Job ID</th>
                                                     <th>Job Title</th>
                                                     <th>Location</th>

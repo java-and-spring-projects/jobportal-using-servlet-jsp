@@ -44,18 +44,21 @@ public class UpdateCandidateProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
+        User user1 = new User();
+        user1.setPhone(phone);
+
         Candidate candidate = new Candidate();
         candidate.setBio(bio);
         candidate.setName(name);
         candidate.setAddress(address);
-        candidate.setPhone(phone);
         candidate.setSkills(skills);
         candidate.setExperience(experience);
         candidate.setEducation(education);
         candidate.setResume(resume);
+        candidate.setUser(user1);
 
         CandidateDao candidateDao = new CandidateDao();
-        candidateDao.updateCandidate(candidate, user.getUserId());
+        candidateDao.updateCandidate(candidate, user);
 
         response.sendRedirect(request.getContextPath() + "/candidate/candidate-profile");
     }
