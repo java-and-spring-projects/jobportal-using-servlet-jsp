@@ -51,6 +51,7 @@ public class AddCandidateServlet extends HttpServlet {
         candidate.setResume(resume);
         candidate.setPhone(user.getPhone());
 
+
         CandidateDao candidateDao = new CandidateDao();
         candidateDao.addCandidate(candidate);
         request.setAttribute("success", "Candidate added successfully");

@@ -83,13 +83,8 @@
                     </div>
 
                     <c:if test="${daysDifference > 0 }">
-                        <c:if test="${job.jobStatus == 'Open'}">
-                            <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
-                        </c:if>
-                        <c:if test="${job.jobStatus == 'Close'}">
-                            <p class="text-danger">You cannot apply for this job. Because this job is closed</p>
-                            <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply" disabled>
-                        </c:if>
+                        <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
+
                         <c:if test="${isSaved}">
                             <a href="${pageContext.request.contextPath}/candidate/unsave-job?jobId=${job.jobId}" class="btn btn-warning">UnSave</a>
                          </c:if>
