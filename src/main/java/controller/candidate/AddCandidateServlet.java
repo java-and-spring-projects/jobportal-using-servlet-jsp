@@ -50,13 +50,12 @@ public class AddCandidateServlet extends HttpServlet {
         candidate.setExperience(experience);
         candidate.setResume(resume);
         candidate.setPhone(user.getPhone());
-
+        candidate.setPic(user.getPic());
 
         CandidateDao candidateDao = new CandidateDao();
         candidateDao.addCandidate(candidate);
         request.setAttribute("success", "Candidate added successfully");
 
-//        request.getRequestDispatcher("/candidate/candidate-dashboard").forward(request, response);
 
         response.sendRedirect(request.getContextPath() + "/candidate/candidate-dashboard");
     }

@@ -70,7 +70,14 @@
                                             <td>${application.candidate.address}</td>
                                             <td>${application.job.jobTitle}</td>
                                             <td>${application.job.jobLocation}</td>
-                                            <td>${application.status}</td>
+                                            <td>
+                                                <c:if test="${application.status == 'Accepted'}">
+                                                    <span class="text-capitalize text-success"><i class="fas fa-check-circle"></i> ${application.status}</span>
+                                                </c:if>
+                                                <c:if test="${application.status == 'Rejected'}">
+                                                    <span class="text-capitalize text-danger"> <i class="fas fa-times-circle"></i> ${application.status}</span>
+                                                </c:if>
+                                             </td>
                                             <td>
                                                <a href="show-application?id=${application.applicationId}" class="btn btn-info btn-sm">View</a>
                                                <a href="delete-application?id=${application.applicationId}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this application?')">Delete</a>

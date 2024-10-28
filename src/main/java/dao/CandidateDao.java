@@ -102,6 +102,8 @@ public class CandidateDao {
                 candidate.setSkills(rs.getString("skills"));
                 candidate.setExperience(rs.getString("experience"));
                 candidate.setResume(rs.getBytes("resume"));
+                candidate.setPic(rs.getString("pic"));
+                candidate.setPhone(rs.getString("phone"));
                 candidate.setUser(user);
 
                 candidates.add(candidate);
@@ -140,25 +142,23 @@ public class CandidateDao {
     }
 
     public boolean updateCandidate(Candidate candidate, int userId) {
-        String sql = "UPDATE Candidate SET pic = ?, bio = ?, name = ?, address = ?, phone = ?, skills = ?, experience = ?, education = ?, resume = ? WHERE user_id = ?";
+        String sql = "UPDATE Candidate SET bio = ?, name = ?, address = ?, phone = ?, skills = ?, experience = ?, education = ?, resume = ? WHERE user_id = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, candidate.getPic());
-            stmt.setString(2, candidate.getBio());
-            stmt.setString(3, candidate.getName());
-            stmt.setString(4, candidate.getAddress());
-            stmt.setString(5, candidate.getPhone());
-            stmt.setString(6, candidate.getSkills());
-            stmt.setString(7, candidate.getExperience());
-            stmt.setString(8, candidate.getEducation());
+            stmt.setString(1, candidate.getBio());
+            stmt.setString(2, candidate.getName());
+            stmt.setString(3, candidate.getAddress());
+            stmt.setString(4, candidate.getPhone());
+            stmt.setString(5, candidate.getSkills());
+            stmt.setString(6, candidate.getExperience());
+            stmt.setString(7, candidate.getEducation());
             stmt.setBytes(9, candidate.getResume());
-            stmt.setInt(10, userId);
+            stmt.setInt(9, userId);
             int res = stmt.executeUpdate();
 
-            PreparedStatement stmt2 = con.prepareStatement("UPDATE User SET phone = ?, pic = ? WHERE user_id = ?");
+            PreparedStatement stmt2 = con.prepareStatement("UPDATE User SET phone = ? WHERE user_id = ?");
             stmt2.setString(1, candidate.getPhone());
-            stmt2.setString(2, candidate.getPic());
-            stmt2.setInt(3, userId);
+            stmt2.setInt(2, userId);
             int res2 = stmt2.executeUpdate();
 
             if (res > 0 && res2 > 0) {
