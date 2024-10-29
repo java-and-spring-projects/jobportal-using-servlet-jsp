@@ -39,7 +39,7 @@
 
 
             <div class="main-content">
-                <h4 class="title">All Candidates</h4>
+                <h4 class="title text-center bg-primary text-white p-3">All Candidates</h4>
                 <div class="search-bar">
                     <form action="search-candidates" method="get">
                         <input type="text" name="search-keyword" placeholder="Search candidates..." required>

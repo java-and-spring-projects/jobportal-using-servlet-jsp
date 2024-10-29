@@ -175,7 +175,8 @@
                             </c:if>
 
                             <div class="buttons">
-                                <c:if test="${daysDifference >= 0 }">
+                                <c:if test="${daysDifference >= 0 && job.jobStatus == 'Open'}">
+
                                     <input type="submit" class="btn btn-primary apply-button mt-4" value="Apply Now">
 
                                      <c:if test="${isSaved}">
@@ -189,15 +190,6 @@
                         </form>
 
                 </div>
-
-
-
-
-
-
-
-
-
 
 
     </div>

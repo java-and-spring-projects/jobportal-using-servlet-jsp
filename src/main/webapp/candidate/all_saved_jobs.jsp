@@ -54,15 +54,17 @@
                 <h3 class="heading">Saved Jobs</h3>
                 <div class="job-list" id="job-list">
                    <c:forEach items="${jobs}" var="job">
-                       <div class="job-card" data-type="Software Engineer">
-                           <div class="job-details">
-                               <h3>${job.jobTitle}</h3>
-                                <p>Last Date:  <span class="postedDate"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
+                       <c:if test="${job.jobStatus == 'Open'}">
+                            <div class="job-card" data-type="Software Engineer">
+                               <div class="job-details">
+                                   <h3>${job.jobTitle}</h3>
+                                    <p>Last Date:  <span class="postedDate"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
+                               </div>
+                               <p>Company: ${job.company.companyName}</p>
+                               <p>Location: ${job.jobLocation}</p>
+                               <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">View Details</a>
                            </div>
-                           <p>Company: ${job.company.companyName}</p>
-                           <p>Location: ${job.jobLocation}</p>
-                           <a href="${pageContext.request.contextPath}/candidate/view-job?jobId=${job.jobId}" id="btn-apply">View Details</a>
-                       </div>
+                       </c:if>
                    </c:forEach>
 
                 </div>

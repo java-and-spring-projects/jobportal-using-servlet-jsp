@@ -4,16 +4,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.*" %>
 
-<%
-    HttpSession session1 = request.getSession();
-    User user = (User) session1.getAttribute("user");
-
-    ApplicationDao applicationDao = new ApplicationDao();
-    List<Application> applications = applicationDao.getAllApplications(user.getUserId());
-
-   request.setAttribute("applications", applications);
-%>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +17,23 @@
         body {
             background-color: #f8f9fa;
         }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        form{
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+    <c:if test="${not empty success}">
+            <script>
+                showToast("${success}");
+            </script>
+        </c:if>
 
     <main>
 
@@ -37,8 +41,11 @@
 
         <div class="content view-applications">
 
+
+
             <div class="main-content">
-                <h4 class="title">View Applications</h4>
+                <h2 class="title text-center bg-primary text-white p-3">View Applications</h2>
+
                 <section>
                     <c:if test="${empty applications}">
                         <p class="text-center text-muted">No applications found.</p>

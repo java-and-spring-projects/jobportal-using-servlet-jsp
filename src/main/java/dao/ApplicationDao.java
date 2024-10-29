@@ -186,10 +186,11 @@ public class ApplicationDao {
         return false;
     }
 
-    public int getTotalApplications() {
-        String sql = "select count(*) from application;";
+    public int getTotalApplications(int userId) {
+        String sql = "select count(*) from application a join job j on a.job_id=j.job_id where j.employer_id=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
@@ -200,10 +201,11 @@ public class ApplicationDao {
         return 0;
     }
 
-    public int getAcceptedApplications() {
-        String sql = "select count(*) from application where status='accepted';";
+    public int getAcceptedApplications(int userId) {
+        String sql = "select count(*) from application a join job j on a.job_id=j.job_id where j.employer_id=? and a.status='Accepted'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
@@ -214,10 +216,11 @@ public class ApplicationDao {
         return 0;
     }
 
-    public int getRejectedApplications() {
-        String sql = "select count(*) from application where status='rejected';";
+    public int getRejectedApplications(int userId) {
+        String sql = "select count(*) from application a join job j on a.job_id=j.job_id where j.employer_id=? and a.status='Rejected'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
@@ -322,7 +325,6 @@ public class ApplicationDao {
         }
         return false;
     }
-
 
 }
 

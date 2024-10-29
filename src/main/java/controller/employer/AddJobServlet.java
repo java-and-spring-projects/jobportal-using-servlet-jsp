@@ -75,6 +75,8 @@ public class AddJobServlet extends HttpServlet {
         JobDao jobDao = new JobDao();
         boolean b = jobDao.addJob(job);
 
-        response.sendRedirect(request.getContextPath()+"/employer/employer-dashboard");
+        request.setAttribute("success", "Job added successfully");
+        request.getRequestDispatcher("/employer/add_job.jsp").forward(request, response);
+//        response.sendRedirect(request.getContextPath()+"/employer/employer-dashboard");
     }
 }

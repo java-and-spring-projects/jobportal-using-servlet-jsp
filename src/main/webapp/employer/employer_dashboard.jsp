@@ -22,9 +22,9 @@
     List<Application> applications = applicationDao.getAllApplications(user.getUserId());
     request.setAttribute("applications", applications);
 
-    int totalApplications = applicationDao.getTotalApplications();
-    int acceptedApplications = applicationDao.getAcceptedApplications();
-    int rejectedApplications = applicationDao.getRejectedApplications();
+    int totalApplications = applicationDao.getTotalApplications(user.getUserId());
+    int acceptedApplications = applicationDao.getAcceptedApplications(user.getUserId());
+    int rejectedApplications = applicationDao.getRejectedApplications(user.getUserId());
 
 %>
 
@@ -54,7 +54,11 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content employer-dashboard">
-
+             <c:if test="${not empty success}">
+                <script>
+                    showToast("${success}");
+                </script>
+            </c:if>
 
             <div class="main-content">
                  <!-- Job Statistics Section -->

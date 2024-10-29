@@ -21,10 +21,8 @@
              display: flex;
              flex-wrap: wrap;
              gap: 70px;
-             background: #fff;
              padding: 20px;
              margin-top: 60px;
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
              transition: transform 0.2s;
          }
 
@@ -62,23 +60,26 @@
          }
 
         .fa-eye{
-            color: blue;
-            font-size: 30px;
             margin: 0 10px;
         }
         .fa-edit{
-            color: green;
-            font-size: 30px;
             margin: 0 10px;
         }
         .fa-trash{
-            color: red;
-            font-size: 30px;
             margin: 0 10px;
         }
         .view-applications  {
             margin-top: 20px;
         }
+        .badge{
+            position: relative;
+            top: -72%;
+            right: -45%;
+        }
+        .job-title{
+            font-weight: 700;
+        }
+
     </style>
 </head>
 <body>
@@ -98,21 +99,20 @@
                   </c:if>
 
                  <section class="open-roles">
-                     <h2 class="text-center">Current Job Openings</h2>
+                     <h2 class="text-center bg-primary text-light p-3">Current Job Openings</h2>
                      <div class="job-list">
                         <c:forEach items="${jobs}" var="job">
                              <div class="job-item">
-                                 <h3>${job.jobTitle}</h3>
+                                 <h3 class="job-title">${job.jobTitle}</h3>
                                  <p><strong>Job ID:</strong> #${job.jobId}</p>
                                  <p><strong>Location:</strong> ${job.jobLocation}</p>
                                  <c:if test="${job.jobStatus == 'Open'}">
-                                    <p><strong>Status:</strong> <span class="text-success"><i class="fas fa-check"></i> </span></p>
+                                    <span class="badge bg-success">Open <i class="fas fa-check"></i></span>
                                  </c:if>
                                   <c:if test="${job.jobStatus == 'Close'}">
-                                    <p><strong>Status:</strong> <span class="text-danger"> <i class="fas fa-times"></i></span></p>
+                                    <span class="badge bg-danger">Close <i class="fas fa-times"></i></span>
                                  </c:if>
-                                 <p><strong>Posted Date:</strong> <fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></p>
-                                 <p><strong>Last Date to Apply:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
+                                 <p id="last-date"><strong>Deadline:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
                                  <div class="job-actions">
                                      <a href="view-job-details?id=${job.jobId}"><i class="fas fa-eye"></i> </a>
                                      <a href="edit-job?id=${job.jobId}"><i class="fas fa-edit"></i></a>

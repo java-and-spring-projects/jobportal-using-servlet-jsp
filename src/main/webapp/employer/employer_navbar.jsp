@@ -25,7 +25,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_applications.jsp"><i class="fas fa-users"></i> View Applications</a>
+            <a class="nav-link" href="view-applications"><i class="fas fa-users"></i> View Applications</a>
         </li>
 
 

@@ -49,6 +49,11 @@
     </style>
 </head>
 <body>
+     <c:if test="${not empty success}">
+        <script>
+            showToast("${success}");
+        </script>
+    </c:if>
 
     <main>
 

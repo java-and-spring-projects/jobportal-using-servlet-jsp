@@ -25,8 +25,10 @@ public class UpdateApplicationServlet extends HttpServlet {
 
         ApplicationDao applicationDao = new ApplicationDao();
         applicationDao.updateApplication(applicationId, status);
+        request.setAttribute("success", "Application status updated successfully");
 
 
-        response.sendRedirect(request.getContextPath()+"/employer/view_applications.jsp");
+        request.getRequestDispatcher("/employer/view-applications").forward(request, response);
+
     }
 }
