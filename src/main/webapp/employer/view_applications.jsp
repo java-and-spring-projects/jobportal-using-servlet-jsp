@@ -5,8 +5,11 @@
 <%@ page import="dao.*, model.*, java.util.*" %>
 
 <%
+    HttpSession session1 = request.getSession();
+    User user = (User) session1.getAttribute("user");
+
     ApplicationDao applicationDao = new ApplicationDao();
-    List<Application> applications = applicationDao.getAllApplications();
+    List<Application> applications = applicationDao.getAllApplications(user.getUserId());
 
    request.setAttribute("applications", applications);
 %>
@@ -33,10 +36,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-applications">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
-
 
             <div class="main-content">
                 <h4 class="title">View Applications</h4>

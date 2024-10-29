@@ -19,7 +19,7 @@
     request.setAttribute("closedJobs", closedJobs);
 
     ApplicationDao applicationDao = new ApplicationDao();
-    List<Application> applications = applicationDao.getAllApplications();
+    List<Application> applications = applicationDao.getAllApplications(user.getUserId());
     request.setAttribute("applications", applications);
 
     int totalApplications = applicationDao.getTotalApplications();
@@ -54,9 +54,7 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content employer-dashboard">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
+
 
             <div class="main-content">
                  <!-- Job Statistics Section -->
@@ -80,7 +78,7 @@
                                                 <h5>Active Jobs</h5>
                                             </div>
                                             <div class="card-body">
-                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-check-circle text-success"></i>
                                                 <h2><%= activeJobs %></h2>
                                             </div>
                                         </div>
@@ -91,7 +89,7 @@
                                                 <h5>Closed Jobs </h5>
                                             </div>
                                             <div class="card-body">
-                                                <i class="fas fa-times-circle"></i>
+                                                <i class="fas fa-times-circle text-danger"></i>
                                                 <h2><%= closedJobs %></h2>
                                             </div>
                                         </div>
@@ -121,7 +119,7 @@
                                               <h5>Total Accepted Applications</h5>
                                           </div>
                                           <div class="card-body">
-                                              <i class="fas fa-check-circle"></i>
+                                              <i class="fas fa-check-circle text-success"></i>
                                               <h2><%= acceptedApplications %></h2>
                                           </div>
                                       </div>
@@ -132,7 +130,7 @@
                                               <h5>Total Rejected Applications</h5>
                                           </div>
                                           <div class="card-body">
-                                              <i class="fas fa-times-circle"></i>
+                                              <i class="fas fa-times-circle text-danger"></i>
                                               <h2><%= rejectedApplications %></h2>
                                           </div>
                                       </div>

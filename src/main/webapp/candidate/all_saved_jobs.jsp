@@ -38,6 +38,18 @@
     <div class="container candidate-dashboard2 saved-jobs">
         <div class="content">
 
+         <c:if test="${not empty error}">
+                <script>
+                    showToast("${error}");
+                </script>
+            </c:if>
+
+            <c:if test="${not empty success}">
+                <script>
+                    showToast("${success}");
+                </script>
+            </c:if>
+
             <section id="job-listings">
                 <h3 class="heading">Saved Jobs</h3>
                 <div class="job-list" id="job-list">

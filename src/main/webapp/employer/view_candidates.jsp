@@ -33,9 +33,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-applications">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold;text-transform: capitalize">${sessionScope.user.username}</span></h4>
-            </div>
 
 
             <div class="main-content">

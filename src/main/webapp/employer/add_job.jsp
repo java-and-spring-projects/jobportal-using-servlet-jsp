@@ -16,6 +16,36 @@
         body {
             background-color: #f8f9fa;
         }
+         .content {
+            margin: auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h4.heading {
+            color: #0044cc;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        label.form-label {
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #0044cc;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #003399;
+        }
     </style>
 </head>
 <body>
@@ -25,10 +55,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content add-job">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
-
 
             <div class="main-content">
                  <h4 class="heading">Post Your Job</h4>

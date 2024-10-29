@@ -16,6 +16,69 @@
         body {
             background-color: #f8f9fa;
         }
+
+         .open-roles .job-list {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 70px;
+             background: #fff;
+             padding: 20px;
+             margin-top: 60px;
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+             transition: transform 0.2s;
+         }
+
+         .job-item {
+             background: #e9f3ff;
+             padding: 20px;
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             text-align: center;
+             width: 30%;
+         }
+
+         .job-item p {
+             margin: 5px 0;
+         }
+
+         .job-actions {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 5px;
+             justify-content: center;
+             margin-top: 10px;
+         }
+
+
+         .job-item a {
+             color: #0044cc;
+             text-decoration: none;
+             font-size: 0.9rem;
+             margin: 0 5px;
+         }
+
+         .job-item a:hover {
+             text-decoration: underline;
+         }
+
+        .fa-eye{
+            color: blue;
+            font-size: 30px;
+            margin: 0 10px;
+        }
+        .fa-edit{
+            color: green;
+            font-size: 30px;
+            margin: 0 10px;
+        }
+        .fa-trash{
+            color: red;
+            font-size: 30px;
+            margin: 0 10px;
+        }
+        .view-applications  {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -25,9 +88,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-applications">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
 
 
             <div class="main-content">
@@ -37,64 +97,32 @@
                       </script>
                   </c:if>
 
-                <h4 class="title">Your Job Postings</h4>
-                <!-- Job Postings Section -->
-                <section>
-                     <c:if test="${empty jobs}">
-                        <p class="text-center text-muted">No jobs found.</p>
-                    </c:if>
+                 <section class="open-roles">
+                     <h2 class="text-center">Current Job Openings</h2>
+                     <div class="job-list">
+                        <c:forEach items="${jobs}" var="job">
+                             <div class="job-item">
+                                 <h3>${job.jobTitle}</h3>
+                                 <p><strong>Job ID:</strong> #${job.jobId}</p>
+                                 <p><strong>Location:</strong> ${job.jobLocation}</p>
+                                 <c:if test="${job.jobStatus == 'Open'}">
+                                    <p><strong>Status:</strong> <span class="text-success"><i class="fas fa-check"></i> </span></p>
+                                 </c:if>
+                                  <c:if test="${job.jobStatus == 'Close'}">
+                                    <p><strong>Status:</strong> <span class="text-danger"> <i class="fas fa-times"></i></span></p>
+                                 </c:if>
+                                 <p><strong>Posted Date:</strong> <fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></p>
+                                 <p><strong>Last Date to Apply:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
+                                 <div class="job-actions">
+                                     <a href="view-job-details?id=${job.jobId}"><i class="fas fa-eye"></i> </a>
+                                     <a href="edit-job?id=${job.jobId}"><i class="fas fa-edit"></i></a>
+                                     <a href="delete-job?id=${job.jobId}" onclick="return confirm('Are you sure you want to delete this job?')"><i class="fas fa-trash"></i></a>
+                                 </div>
+                             </div>
+                        </c:forEach>
+                     </div>
+                 </section>
 
-                    <c:if test="${not empty jobs}">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr class="bg-secondary text-white">
-                                                    <th>Job ID</th>
-                                                    <th>Job Title</th>
-                                                    <th>Location</th>
-                                                    <th>Date Posted</th>
-                                                    <th>Last Date</th>
-                                                    <th>Status</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                              <c:forEach items="${jobs}" var="job">
-                                                  <tr>
-                                                      <td>${job.jobId}</td>
-                                                      <td>${job.jobTitle}</td>
-                                                      <td>${job.jobLocation}</td>
-                                                      <td><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></td>
-                                                      <td><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></td>
-                                                      <td>
-                                                        <c:if test="${job.jobStatus == 'Open'}">
-                                                            <p class="text-success"><i class="fas fa-check-circle text-success"></i> ${job.jobStatus}</p>
-
-                                                        </c:if>
-                                                        <c:if test="${job.jobStatus == 'Close'}">
-                                                            <span  <p class="text-danger"><i class="fas fa-times-circle text-danger"></i> ${job.jobStatus}</p>
-
-                                                        </c:if>
-                                                      <td>
-                                                           <a href="view-job-details?id=${job.jobId}" class="btn btn-info btn-sm">View</a>
-                                                           <a href="edit-job?id=${job.jobId}" class="btn btn-primary btn-sm">Edit</a>
-                                                           <a href="delete-job?id=${job.jobId}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this job?')">Delete</a>
-                                                       </td>
-                                                  </tr>
-                                              </c:forEach>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
-
-                </section>
             </div>
         </div>
    	</main>

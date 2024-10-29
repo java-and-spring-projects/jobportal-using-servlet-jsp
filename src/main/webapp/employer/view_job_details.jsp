@@ -69,9 +69,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-job-details">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
 
 
             <div class="main-content">
@@ -113,7 +110,14 @@
                         </tr>
                         <tr>
                             <th>Job Status</th>
-                            <td>${job.jobStatus}</td>
+                            <td>
+                                <c:if test="${job.jobStatus == 'Open'}">
+                                    <span class="badge bg-success">${job.jobStatus}</span>
+                                </c:if>
+                                <c:if test="${job.jobStatus == 'Close'}">
+                                    <span class="badge bg-danger">${job.jobStatus}</span>
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <th>Posted Date</th>

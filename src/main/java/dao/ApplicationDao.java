@@ -47,13 +47,14 @@ public class ApplicationDao {
     return  false;
     }
 
-    public List<Application> getAllApplications() {
+    public List<Application> getAllApplications(int userId) {
         String sql = "select a.*, j.*, u.*,c.* from application a \n" +
                 "join job j on a.job_id=j.job_id \n" +
                 "join user u on u.user_id=a.user_id \n" +
-                "join candidate c on c.user_id=u.user_id;";
+                "join candidate c on c.user_id=u.user_id where j.employer_id=?;";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,userId);
             ResultSet rs = stmt.executeQuery();
             List<Application> applications = new ArrayList<>();
             while (rs.next()) {
@@ -129,6 +130,7 @@ public class ApplicationDao {
                 user.setStatus(rs.getString("status"));
 
                 Candidate candidate = new Candidate();
+                candidate.setCandidateId(rs.getInt("candidate_id"));
                 candidate.setName(rs.getString("name"));
                 candidate.setAddress(rs.getString("address"));
                 candidate.setEducation(rs.getString("education"));
@@ -320,5 +322,7 @@ public class ApplicationDao {
         }
         return false;
     }
+
+
 }
 

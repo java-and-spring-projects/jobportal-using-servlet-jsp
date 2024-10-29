@@ -27,7 +27,7 @@ public class JobDao {
     public boolean addJob(Job job) {
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("insert into job (company_id, employer_id, job_title, job_description, location,  salary, job_type, experience, requirements, responsibilities, benefits, vacancy, education, last_date) values(?, ?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = con.prepareStatement("insert into job (company_id, employer_id, job_title, job_description, location,  salary, job_type, experience, requirements, responsibilities, benefits, vacancy, education_req, last_date) values(?, ?,?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setInt(1, job.getCompany().getCompanyId());
             preparedStatement.setInt(2, job.getUser().getUserId());
             preparedStatement.setString(3, job.getJobTitle());
@@ -73,7 +73,7 @@ public class JobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setLastDate(rs.getTimestamp("last_date"));
@@ -157,7 +157,7 @@ public class JobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setLastDate(rs.getTimestamp("last_date"));
@@ -201,7 +201,7 @@ public class JobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setLastDate(rs.getTimestamp("last_date"));
@@ -286,7 +286,7 @@ public class JobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setCompany(company);
@@ -323,7 +323,7 @@ public class JobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setLastDate(rs.getTimestamp("last_date"));
@@ -341,7 +341,7 @@ public class JobDao {
     public boolean updateJob(Job job) {
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("update job set job_title = ?, job_description = ?, location = ?, salary = ?, job_type = ?, education = ?, experience = ?, requirements = ?, responsibilities = ?, benefits = ?, vacancy = ?, status = ? where job_id = ?");
+            PreparedStatement preparedStatement = con.prepareStatement("update job set job_title = ?, job_description = ?, location = ?, salary = ?, job_type = ?, education_req = ?, experience = ?, requirements = ?, responsibilities = ?, benefits = ?, vacancy = ?, status = ? where job_id = ?");
             preparedStatement.setString(1, job.getJobTitle());
             preparedStatement.setString(2, job.getJobDescription());
             preparedStatement.setString(3, job.getJobLocation());

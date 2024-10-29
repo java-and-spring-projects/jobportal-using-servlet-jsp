@@ -453,18 +453,7 @@ footer {
     right: 1%;
     top:0;
 }
-.employer-dashboard .header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-    background-color: skyblue;
-    margin-top: 10px;
-    color: yellow;
-    font-size: 30px;
-    font-weight: 600;
-}
+
 .employer-dashboard section{
     padding: 20px;
 }
@@ -496,7 +485,6 @@ footer {
 .employer-dashboard .company-card span{
     font-weight: 600;
 }
-
 
 
 
@@ -561,13 +549,10 @@ footer {
     padding: 20px;
     border-bottom: 1px solid #ddd;
     background-color: skyblue;
-    margin-top: 10px;
+    margin-top: 4px;
     color: yellow;
     font-size: 30px;
     font-weight: 600;
-}
-.company-details .main-content{
-     margin:30px auto;
 }
 .company-details .main-content .card-body span{
      font-weight:600;
@@ -710,58 +695,6 @@ footer {
 }
 
 
-
-
-
-
-
- /** apply-job **/
-.apply-job{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    margin:20px auto;
-    padding: 30px 50px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    font-size: 15px;
-}
-
-.apply-job #job-listing #company-detail-container{
-    display: flex;
-    justify-content: space-between;
-}
-.apply-job  span{
-    font-weight: 600;
-}
-
-.apply-job  .requirements, .responsibilites, .benefits{
-   box-shadow: 1px -1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
-   padding: 20px;
-   margin-bottom: 20px;
-   border-radius: 5px;
-   background-color: white;
-}
-.apply-job #job-desc .title{
-    font-weight: 600;
-}
-.apply-job #btn-apply{
-    display: inline-block;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin: 20px auto;
-    border-radius: 5px;
-    width: 150px;
-}
-.apply-job .job-title{
-    margin-bottom: 20px;
-}
-.apply-job .days-left{
-    color: red;
-    font-weight: 400;
-    font-size: 12px;
-}
 
 
 

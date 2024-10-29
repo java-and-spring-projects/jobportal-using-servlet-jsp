@@ -14,29 +14,81 @@
     <%@ include file="../components/header.jsp"%>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .apply-job {
-            background-color: white;
-        }
-        .apply-job .section-main {
-            display: flex;
-            gap: 70px;
-        }
-        .apply-job .job-details {
-            width: 70%;
-            padding: 20px;
-        }
-        .apply-job aside {
-            width: 25%;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-         }
-         .apply-job .job-summary {
-            border: 1px solid #ddd;
-         }
-         .apply-job .company-info {
-            border: 1px solid #ddd;
-         }
+
+         .container {
+                     max-width: 800px;
+                     background-color: #ffffff;
+                     padding: 30px;
+                     border-radius: 8px;
+                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                     margin: 50px auto;
+                 }
+
+                 h2 {
+                     color: #0044cc;
+                     text-align: center;
+                     font-weight: bold;
+                 }
+
+                 .job-header, .job-details {
+                     margin-bottom: 20px;
+                 }
+
+                 .job-details h4 {
+                     font-size: 1.2rem;
+                     font-weight: 600;
+                     color: #333;
+                 }
+
+                 .job-details p {
+                     margin: 0;
+                     color: #555;
+                 }
+
+                 .apply-button {
+                     display: block;
+                     background-color: #0044cc;
+                     color: #ffffff;
+                     font-weight: bold;
+                     padding: 10px;
+                     text-align: center;
+                     border-radius: 5px;
+                     text-decoration: none;
+                     transition: background-color 0.3s;
+                 }
+
+                 .apply-button:hover {
+                     background-color: #003399;
+                     text-decoration: none;
+                 }
+
+                 .section-title {
+                     font-size: 1.1rem;
+                     font-weight: bold;
+                     margin-top: 15px;
+                     color: #0044cc;
+                     text-transform: uppercase;
+                 }
+
+                 .company-info {
+                     background-color: #e9ecef;
+                     padding: 15px;
+                     border-radius: 5px;
+                     margin-bottom: 20px;
+                 }
+
+                 .company-info h4 {
+                     margin-bottom: 10px;
+                 }
+                 .buttons {
+                     display: flex;
+                     flex-direction: column;
+                     gap: 10px;
+                 }
+                 .buttons .apply-button {
+                    width: 100%;
+                 }
+
 
     </style>
 </head>
@@ -45,93 +97,105 @@
     <%@ include file="../components/navbar.jsp"%>
 
 
-    <div class="container apply-job">
+    <div class="main">
 
         <section class="section-main">
-            <section class="job-details">
-                <h4 class="job-title"><span>${job.jobTitle}</span></h4>
-                <p><i class="fa-solid fa-location-dot"></i> <span>${job.jobLocation}</span></p>
-                <p><i class="fa-solid fa-money-bill-1"></i> <span>${job.jobSalary} p.a.</span></p>
-                <p>Posted on: <span class="postedDate"><fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></span></p>
-                <p>Last date to apply: <span class="lastDateToApply"><fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></span></p>
-                <c:if test="${daysDifference >= 0 }">
-                    <p class="days-left">${daysDifference} days left to apply</p>
-                </c:if>
-                <c:if test="${daysDifference < 0 }">
-                    <p class="days-left">Deadline passed</p>
-                </c:if>
 
-                 <hr>
-                 <div class="requirements">
-                    <p class="title">Requirements</p>
-                    <p>${job.requirements}</p>
-                </div>
+             <div class="container">
 
-                <div class="responsibilites">
-                    <p class="title">Responsibilites</p>
-                    <p>${job.responsibilities}</p>
-                </div>
-                <div class="benefits">
-                    <p class="title">Benefits</p>
-                    <p>${job.benefits}</p>
-                </div>
-                <form action="${pageContext.request.contextPath}/candidate/apply-job">
-                    <input type="hidden" name="jobId" value="${job.jobId}">
-                    <div class="mb-3 form-floating">
-                        <textarea class="form-control" name="feedback" id="floatingTextarea2" style="height: 160px"></textarea>
-                        <label for="floatingTextarea2">Feedback</label>
+                    <div class="job-header text-center">
+                        <h2>${job.jobTitle}</h2>
+                        <p>at <strong>${job.company.companyName}</strong></p>
+                        <p>Location: <strong>${job.jobLocation}</strong> | <span class="text-muted">${job.jobType}</span></p>
                     </div>
 
-                    <c:if test="${daysDifference > 0 }">
-                        <input type="submit" class="btn btn-primary" id="btn-apply" value="Apply">
-
-                        <c:if test="${isSaved}">
-                            <a href="${pageContext.request.contextPath}/candidate/unsave-job?jobId=${job.jobId}" class="btn btn-warning">UnSave</a>
-                         </c:if>
-                         <c:if test="${!isSaved}">
-                            <a href="${pageContext.request.contextPath}/candidate/save-job?jobId=${job.jobId}" class="btn btn-warning">Save</a>
-                         </c:if>
-                    </c:if>
-                </form>
-
-            </section>
-
-            <aside>
-                <div class="job-summary card">
-                    <div class="card-header text-center text-white bg-secondary">
-                        <h5>Job Summary</h5>
+                    <!-- Company Information -->
+                    <div class="company-info">
+                        <h4 class="section-title">Company Information</h4>
+                        <p><strong>Company Name:</strong>${job.company.companyName} <img src="../images/company/${job.company.logo}" alt="Company Logo" class="img-thumbnail" style="width: 40px; height: 40px; border-radius: 50%;"></p>
+                        <p><strong>Company Address:</strong> ${job.company.companyAddress}</p>
+                        <p><strong>Company Type:</strong> ${job.company.companyType}</p>
+                        <p><strong>Company Size:</strong> ${job.company.companySize}</p>
+                        <p><strong>Established:</strong> ${job.company.foundedYear}</p>
+                        <p><strong><i class="fa fa-globe"></i> </strong> <a href="${job.company.companyWebsite}" target="_blank">${job.company.companyWebsite}</a></p>
+                        <p><strong><i class="fa fa-envelope"></i></strong> ${job.company.companyEmail}</p>
                     </div>
-                    <div class="card-body">
-                        <c:if test="${job.jobStatus == 'Open'}">
-                             <p>Status: <span class="badge bg-success">${job.jobStatus}</span></p>
-                        </c:if>
-                        <c:if test="${job.jobStatus == 'Close'}">
-                            <p>Status: <span class="badge bg-danger">${job.jobStatus}</span></p>
-                        </c:if>
 
-                        <p>Job type: <span>${job.jobType}</span></p>
-                        <p>Education: <span>${job.education}</span></p>
-                         <p>Experience: <span>${job.experience} Years</span></p>
-                        <p>Total vacancy: <span>${job.vacancy}</span></p>
+
+                    <div class="job-details">
+                        <h4 class="section-title">Job Description</h4>
+                        <p>${job.jobDescription}  </p>
                     </div>
+
+
+                    <div class="job-details">
+                        <h4 class="section-title">Details</h4>
+                        <p><strong>Salary:</strong> ₹ ${job.jobSalary} / year</p>
+                        <p><strong>Experience Required:</strong> ${job.experience} years</p>
+                        <p><strong>Education:</strong> ${job.education}</p>
+                        <p><strong>Posted Date:</strong> <fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></p>
+                        <p><strong>Application Deadline:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
+                        <p><strong>Vacancies:</strong> ${job.vacancy}</p>
+                    </div>
+
+                    <div class="job-details">
+                        <h4 class="section-title">Responsibilities</h4>
+                        <p>${job.responsibilities}</p>
+                    </div>
+
+                    <div class="job-details">
+                        <h4 class="section-title">Requirements</h4>
+                        <p>${job.requirements}</p>
+                    </div>
+
+                    <!-- Benefits -->
+                    <div class="job-details">
+                        <h4 class="section-title">Benefits</h4>
+                        <p>${job.benefits}</p>
+                    </div>
+
+
+
+                     <form action="${pageContext.request.contextPath}/candidate/apply-job">
+                            <input type="hidden" name="jobId" value="${job.jobId}">
+                            <div class="mb-3 form-floating">
+                                <textarea class="form-control" name="feedback" id="floatingTextarea2" style="height: 160px"></textarea>
+                                <label for="floatingTextarea2">Feedback</label>
+                            </div>
+
+
+                            <c:if test="${daysDifference > 0 }">
+                                <p class="days-left text-success">${daysDifference} days left to apply</p>
+                            </c:if>
+                            <c:if test="${daysDifference < 0 }">
+                                <p class="days-left text-danger">Deadline passed</p>
+                            </c:if>
+                            <c:if test="${daysDifference == 0 }">
+                                <p class="days-left text-success">Deadline today</p>
+                            </c:if>
+
+                            <div class="buttons">
+                                <c:if test="${daysDifference >= 0 }">
+                                    <input type="submit" class="btn btn-primary apply-button mt-4" value="Apply Now">
+
+                                     <c:if test="${isSaved}">
+                                        <a href="${pageContext.request.contextPath}/candidate/unsave-job?jobId=${job.jobId}" class="btn btn-unsave bg-secondary text-white">UnSave</a>
+                                     </c:if>
+                                     <c:if test="${!isSaved}">
+                                        <a href="${pageContext.request.contextPath}/candidate/save-job?jobId=${job.jobId}" class="btn btn-warning btn-save">Save</a>
+                                     </c:if>
+                                </c:if>
+                            </div>
+                        </form>
+
                 </div>
-                <div class="company-info card">
-                    <div class="card-header text-center text-white bg-secondary">
-                        <h5>Company Information</h5>
-                    </div>
-                    <div class="card-body">
-                        <img src="../images/company/${job.company.logo}" alt="Company Logo" class="img-thumbnail" style="width: 80px; height: 80px; border-radius: 50%;margin-bottom: 20px">
-                        <h4><span>${job.company.companyName}</span></h4>
-                        <p><i class="fa fa-map-marker"></i> <span>${job.company.companyAddress}</span></p>
-                        <p><i class="fa fa-envelope"></i> <span>${job.company.companyEmail}</span></p>
-                        <p><i class="fa fa-globe"></i> <span>${job.company.companyWebsite}</span></p>
-                        <p>Company Size: <span>${job.company.companySize}</span></p>
-                        <p>Founded On: <span>${job.company.foundedYear}</span></p>
-                        <p>Company Type: <span>${job.company.companyType}</span></p>
-                    </div>
-                </div>
-            </aside>
-        </section>
+
+
+
+
+
+
+
 
 
 

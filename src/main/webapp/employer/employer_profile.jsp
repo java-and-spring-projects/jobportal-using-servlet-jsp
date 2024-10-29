@@ -23,9 +23,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content employer-profile">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
 
             <div class="main-content">
                 <section>

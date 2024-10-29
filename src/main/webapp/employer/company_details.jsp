@@ -14,6 +14,59 @@
         body {
             background-color: #f8f9fa;
         }
+         /* Header Section */
+
+                #header {
+                    background: rgb(0, 68, 204);
+                    color: #fff;
+                    text-align: center;
+                    padding: 40px 0;
+                }
+
+                .header-content {
+                    max-width: 800px;
+                    margin: auto;
+                }
+
+                .company-logo {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                }
+
+                .tagline {
+                    font-size: 1.2rem;
+                    margin-top: 10px;
+                }
+
+                /* Sections */
+                section {
+                    max-width: 800px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                h2 {
+                    margin-bottom: 15px;
+                    color: #0044cc;
+                }
+
+                p {
+                    margin-bottom: 15px;
+                }
+
+                .key-facts ul {
+                    list-style: none;
+                }
+
+                .key-facts li {
+                    margin-bottom: 10px;
+                }
+
+
     </style>
 </head>
 <body>
@@ -23,26 +76,35 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content company-details">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
+
 
             <div class="main-content">
-                <section>
-                    <h3>Company Information</h3>
-                    <div class="card company-card">
-                        <div class="card-body">
-                            <img src="../images/company/${company.logo}" alt="Company Logo" class="img-thumbnail" style="width: 100px; height: 100px; border-radius: 50%;">
-                            <p>Founded On: <span>${company.foundedYear}</span></p>
-                            <p>Company Name: <span>${company.companyName}</span></p>
-                            <p>Location: <span>${company.companyAddress}</span></p>
-                            <p>Website: <span>${company.companyWebsite}</span></p>
-                            <p>Company size: <span>${company.companySize}</span></p>
-                            <p>Company Email: <span>${company.companyEmail}</span></p>
-                            <a href="company_profile.jsp" class="btn btn-primary">Edit Company Profile</a>
+
+                <header class="header" id="header">
+                        <div class="header-content">
+                            <img src="../images/company/${company.logo}" alt="Company Logo" class="company-logo">
+                            <h1 class="text-capitalize">${company.companyName}</h1>
+                            <p class="tagline"><i class="fas fa-map-marker-alt"></i> ${company.companyAddress}</p>
                         </div>
-                    </div>
-                </section>
+                    </header>
+
+                    <!-- About Section -->
+                    <section class="about-section">
+                        <h2>About Us</h2>
+                        <p>We are a leading company in the technology industry, dedicated to innovation and excellence. Founded in 2005, we have offices worldwide and are committed to fostering an inclusive and dynamic work culture.</p>
+                    </section>
+
+                    <section class="key-facts">
+                        <h2>Key Facts & Stats</h2>
+                        <ul>
+                            <li><strong>Founded:</strong> ${company.foundedYear}</li>
+                            <li><strong>Employees:</strong> ${company.companySize}+</li>
+                            <li><strong>Email:</strong> ${company.companyEmail}</li>
+                            <li><strong>Website:</strong> ${company.companyWebsite}</li>
+                        </ul>
+                    </section>
+
+
             </div>
         </div>
    	</main>

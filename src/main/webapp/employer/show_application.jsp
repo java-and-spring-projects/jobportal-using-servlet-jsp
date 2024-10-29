@@ -4,8 +4,11 @@
 <%@ page import="dao.*, model.*, java.util.*" %>
 
 <%
+    HttpSession session1 = request.getSession();
+    User user = (User) session1.getAttribute("user");
+
     ApplicationDao applicationDao = new ApplicationDao();
-    List<Application> applications = applicationDao.getAllApplications();
+    List<Application> applications = applicationDao.getAllApplications(user.getUserId());
 
    request.setAttribute("applications", applications);
 %>
@@ -51,6 +54,12 @@
             justify-content: space-evenly;
             gap: 50px;
         }
+        .job-card{
+            width: 35%;
+        }
+        .candidate-card{
+            width: 35%;
+        }
     </style>
 </head>
 <body>
@@ -60,10 +69,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content show-application">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
-
 
             <div class="main-content">
                 <h4 class="title">Update Application</h4>
@@ -79,18 +84,19 @@
                     </div>
                     <div class="candidate-job-details">
                         <div class="candidate-card card">
-                            <div class="card-header text-center bg-primary text-white">Candidate Details</div>
+                            <div class="card-header text-center bg-secondary text-white">Candidate Details</div>
                             <div class="card-body">
                                 <p>Name: <span>${application.candidate.name}</span></p>
                                 <p>Email: <span>${application.user.email}</span></p>
                                 <p>Phone: <span>${application.user.phone}</span></p>
                                 <p>Education: <span>${application.candidate.education}</span></p>
                                 <p>Experience: <span>${application.candidate.experience} Years</span></p>
+                                <a href="view-candidate-details?id=${application.candidate.candidateId}" class="btn btn-outline-primary btn-sm">View Candidate Profile</a>
                             </div>
                         </div>
 
                         <div class="job-card card">
-                            <div class="card-header text-center bg-primary text-white">Job Details</div>
+                            <div class="card-header text-center bg-secondary text-white">Job Details</div>
                             <div class="card-body">
                                  <p>Job Title: <span>${application.job.jobTitle}</span></p>
                                 <p>Job Location: <span>${application.job.jobLocation}</span></p>
@@ -98,6 +104,7 @@
                                 <p>Job Type: <span>${application.job.jobType}</span></p>
                                 <p>Description: <span>${application.job.jobDescription}</span></p>
                                 <p>Vacancy: <span>${application.job.vacancy}</span></p>
+                                <a href="view-job-details?id=${application.job.jobId}" class="btn btn-outline-primary btn-sm">View Job Details</a>
                             </div>
                         </div>
 

@@ -79,7 +79,7 @@ public class SavedJobDao {
                 job.setResponsibilities(rs.getString("responsibilities"));
                 job.setBenefits(rs.getString("benefits"));
                 job.setVacancy(rs.getString("vacancy"));
-                job.setEducation(rs.getString("education"));
+                job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
                 job.setLastDate(rs.getTimestamp("last_date"));

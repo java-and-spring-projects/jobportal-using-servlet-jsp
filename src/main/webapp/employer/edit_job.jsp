@@ -78,10 +78,6 @@
        <%@ include file="employer_navbar.jsp"%>
 
         <div class="content view-job-details">
-            <div class="header">
-                <h4>Welcome, <span style="font-weight: bold">${sessionScope.user.username}</span></h4>
-            </div>
-
 
             <div class="main-content">
                 <h4 class="title">Update Job Posting</h4>

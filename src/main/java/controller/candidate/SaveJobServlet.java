@@ -31,7 +31,7 @@ public class SaveJobServlet extends HttpServlet {
         request.setAttribute("success", "Job saved successfully");
 
 
-        request.getRequestDispatcher("/candidate/candidate-dashboard").forward(request, response);
+        request.getRequestDispatcher("/candidate/all-saved-jobs").forward(request, response);
 
     }
 }
