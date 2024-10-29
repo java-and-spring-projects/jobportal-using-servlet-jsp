@@ -289,6 +289,7 @@ public class JobDao {
                 job.setEducation(rs.getString("education_req"));
                 job.setCreatedAt(rs.getTimestamp("posted_on"));
                 job.setJobStatus(rs.getString("status"));
+                job.setLastDate(rs.getTimestamp("last_date"));
                 job.setCompany(company);
                 job.setUser(user);
 
