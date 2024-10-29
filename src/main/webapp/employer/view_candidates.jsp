@@ -3,13 +3,7 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="dao.*, model.*, java.util.*" %>
 
-<%
-     CandidateDao candidateDao = new CandidateDao();
-    List<Candidate> candidates = candidateDao.getAllCandidates();
 
-    request.setAttribute("candidates", candidates);
-
-%>
 
 
 <!DOCTYPE html>
@@ -24,6 +18,15 @@
         body {
             background-color: #f8f9fa;
         }
+        form{
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
     </style>
 </head>
 <body>
@@ -37,6 +40,13 @@
 
             <div class="main-content">
                 <h4 class="title">All Candidates</h4>
+                <div class="search-bar">
+                    <form action="search-candidates" method="get">
+                        <input type="text" name="search-keyword" placeholder="Search candidates..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                    <a href="view-candidates" class="btn btn-primary btn-sm">All Candidate</a>
+                </div>
                 <!-- Job Postings Section -->
                 <section>
                     <div class="row">

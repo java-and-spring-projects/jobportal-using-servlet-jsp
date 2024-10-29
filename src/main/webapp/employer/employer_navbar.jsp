@@ -30,7 +30,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/employer/view_candidates.jsp"><i class="fas fa-user-graduate"></i> View Candidates</a>
+            <a class="nav-link" href="view-candidates"><i class="fas fa-user-graduate"></i> View Candidates</a>
         </li>
         <hr>
         <li class="nav-item">
