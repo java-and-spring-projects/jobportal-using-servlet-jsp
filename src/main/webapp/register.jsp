@@ -11,6 +11,11 @@
     <title>Job Portal User Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
     <%@ include file="../components/header.jsp"%>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
 <body>
     <%@ include file="../components/navbar.jsp"%>
@@ -23,26 +28,31 @@
                           <form action="${pageContext.request.contextPath}/register" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Username:</label>
-                                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                                    <strong style="color: red;">*</strong>
+                                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" required>
                                  </div>
 
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Password:</label>
-                                    <input type="password" class="form-control" name="password" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password">
+                                    <strong style="color: red;">*</strong>
+                                    <input type="password" class="form-control" name="password" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" required>
                                  </div>
 
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email address">
+                                    <strong style="color: red;">*</strong>
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email address" required>
                                  </div>
 
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Phone:</label>
-                                    <input type="text" class="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone number">
+                                    <strong style="color: red;">*</strong>
+                                    <input type="text" class="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone number" required>
                                  </div>
 
                                  <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Role:</label>
+                                    <strong style="color: red;">*</strong>
                                     <select class="form-select" name="role" aria-label="Default select example" required>
                                         <option selected>-Select the role-</option>
                                         <option value="Employer">Employer</option>

@@ -31,7 +31,7 @@
             margin-bottom: 20px;
             width: 120px;
             height: 120px;
-            margin-left: 400px;
+            margin-left: 410px;
         }
         .employer-card h3 {
             color: #007bff;

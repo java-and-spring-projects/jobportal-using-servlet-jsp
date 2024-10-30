@@ -14,7 +14,6 @@
         body {
             background-color: #f8f9fa;
         }
-         /* Header Section */
 
                 #header {
                     background: rgb(0, 68, 204);
@@ -39,7 +38,6 @@
                     margin-top: 10px;
                 }
 
-                /* Sections */
                 section {
                     max-width: 800px;
                     margin: 20px auto;

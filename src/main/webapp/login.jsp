@@ -11,6 +11,11 @@
     <title>Job Portal User Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
     <%@ include file="../components/header.jsp"%>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
 <body>
     <%@ include file="../components/navbar.jsp"%>

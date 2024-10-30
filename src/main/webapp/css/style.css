@@ -357,7 +357,7 @@ footer {
     width: 45%;
     margin: 30px auto;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding:40px 100px;
     background: #ffffff;
 }
@@ -388,7 +388,7 @@ footer {
 #login {
     width: 40%;
     margin: 206px auto;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding:40px 100px;
     background: #ffffff;
