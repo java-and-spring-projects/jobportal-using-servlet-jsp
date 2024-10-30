@@ -13,7 +13,7 @@
                     <li><a href="${pageContext.request.contextPath}/candidate/my-applications">My Applications</a></li>
                     <li><a href="${pageContext.request.contextPath}/candidate/all-saved-jobs">Saved Jobs</a></li>
                     <li><a href="${pageContext.request.contextPath}/candidate/candidate-profile"><i class="fas fa-user-circle"></i> ${sessionScope.user.username}</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">Logout <i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
 
             </c:when>

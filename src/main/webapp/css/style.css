@@ -19,7 +19,7 @@ body {
 
 
 
-
+/** navbar **/
 .header-main {
     padding: 20px;
     display: flex;
@@ -58,7 +58,8 @@ body {
 
 .header-main nav ul li a:hover {
     text-decoration: none;
-    color: red;
+    border-bottom: 2px solid white;
+    transition: 0.1s;
 }
 #logo{
     color: #ffffff;
@@ -119,7 +120,7 @@ footer {
     background-image: url('../images/banner.jpg');
     background-size: cover;
     background-position: center;
-    height: 85vh;
+    height: 82vh;
     width: 100%;
     color: white;
     opacity: 1;
@@ -128,7 +129,7 @@ footer {
     z-index: 1;
 }
 .home .content .box{
-    height:85vh;
+    height:82vh;
     width: 100%;
     position:absolute;
     z-index: 1;
@@ -387,7 +388,7 @@ footer {
 /* Login Page */
 #login {
     width: 40%;
-    margin: 206px auto;
+    margin: 222px auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding:40px 100px;

@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Portal Candidate Dashboard</title>
+    <title>Job Portal: Saved Jobs</title>
     <%@ include file="../components/header.jsp"%>
     <%@ include file="../components/custom_toast.html"%>
     <link rel="stylesheet" href="../css/style.css">
@@ -22,7 +22,7 @@
             margin: 0 auto;
         }
         .saved-jobs #job-listings .job-card{
-            background: #0D92F4;
+            background: rgb(53, 153, 219);
             color:white;
         }
         .saved-jobs #job-listings .job-card p{

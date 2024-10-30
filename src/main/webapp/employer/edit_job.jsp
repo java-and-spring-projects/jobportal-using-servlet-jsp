@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employer Dashboard</title>
+    <title>Job Portal: Edit Job</title>
     <%@ include file="../components/header.jsp"%>
     <link rel="stylesheet" href="../css/style.css">
 

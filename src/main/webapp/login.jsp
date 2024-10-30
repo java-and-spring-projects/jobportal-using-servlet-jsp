@@ -8,8 +8,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Portal User Dashboard</title>
+    <title>Job Portal: Login</title>
+    <link rel="icon" href="images/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
+
     <%@ include file="../components/header.jsp"%>
     <style>
         body {
