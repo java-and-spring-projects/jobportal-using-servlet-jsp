@@ -134,7 +134,7 @@
                         <p><strong>Experience Required:</strong> ${job.experience} years</p>
                         <p><strong>Education:</strong> ${job.education}</p>
                         <p><strong>Posted Date:</strong> <fmt:formatDate value="${job.createdAt}" pattern="dd-MM-yyyy" /></p>
-                        <p><strong>Application Deadline:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
+
                         <p><strong>Vacancies:</strong> ${job.vacancy}</p>
                     </div>
 
@@ -142,6 +142,8 @@
                         <h4 class="section-title">Responsibilities</h4>
                         <p>${job.responsibilities}</p>
                     </div>
+
+
 
                     <div class="job-details">
                         <h4 class="section-title">Requirements</h4>
@@ -164,6 +166,7 @@
                             </div>
 
 
+
                             <c:if test="${daysDifference > 0 }">
                                 <p class="days-left text-success">${daysDifference} days left to apply</p>
                             </c:if>
@@ -173,6 +176,8 @@
                             <c:if test="${daysDifference == 0 }">
                                 <p class="days-left text-success">Deadline today</p>
                             </c:if>
+
+                             <p><strong>Application Deadline:</strong> <fmt:formatDate value="${job.lastDate}" pattern="dd-MM-yyyy" /></p>
 
                             <div class="buttons">
                                 <c:if test="${daysDifference >= 0 && job.jobStatus == 'Open'}">

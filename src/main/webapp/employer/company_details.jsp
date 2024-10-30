@@ -89,13 +89,13 @@
                     <!-- About Section -->
                     <section class="about-section">
                         <h2>About Us</h2>
-                        <p>We are a leading company in the technology industry, dedicated to innovation and excellence. Founded in 2005, we have offices worldwide and are committed to fostering an inclusive and dynamic work culture.</p>
+                        <p>We are a leading company in the technology industry, dedicated to innovation and excellence. Founded in ${company.foundedYear}, we have offices worldwide and are committed to fostering an inclusive and dynamic work culture.</p>
                     </section>
 
                     <section class="key-facts">
                         <h2>Key Facts & Stats</h2>
                         <ul>
-                            <li><strong>Founded:</strong> ${company.foundedYear}</li>
+                            <li><strong>Founded Year:</strong> ${company.foundedYear}</li>
                             <li><strong>Employees:</strong> ${company.companySize}+</li>
                             <li><strong>Email:</strong> ${company.companyEmail}</li>
                             <li><strong>Website:</strong> <a href="${company.companyWebsite}" target="_blank">${company.companyWebsite}</a></li>
