@@ -374,4 +374,57 @@ public class JobDao {
             return false;
         }
     }
+
+    public List<Job> getRecentJobsWithCompany() {
+        List<Job> jobs =new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select j.*, c.*, u.* from job j join company c on j.company_id=c.company_id join user u on j.employer_id=u.user_id order by j.posted_on desc limit 5");
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Company company = new Company();
+                company.setCompanyType(rs.getString("company_type"));
+                company.setCompanyName(rs.getString("company_name"));
+                company.setCompanyEmail(rs.getString("company_email"));
+                company.setCompanyWebsite(rs.getString("company_website"));
+                company.setCompanyAddress(rs.getString("company_address"));
+                company.setCompanySize(rs.getString("company_size"));
+                company.setFoundedYear(rs.getString("founded_year"));
+                company.setLogo(rs.getString("logo"));
+
+                User user = new User();
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+
+
+                Job job = new Job();
+
+                job.setJobId(rs.getInt("job_id"));
+                job.setJobTitle(rs.getString("job_title"));
+                job.setJobDescription(rs.getString("job_description"));
+                job.setJobLocation(rs.getString("location"));
+                job.setJobSalary(rs.getString("salary"));
+                job.setJobType(rs.getString("job_type"));
+                job.setExperience(rs.getString("experience"));
+                job.setRequirements(rs.getString("requirements"));
+                job.setResponsibilities(rs.getString("responsibilities"));
+                job.setBenefits(rs.getString("benefits"));
+                job.setVacancy(rs.getString("vacancy"));
+                job.setEducation(rs.getString("education_req"));
+                job.setCreatedAt(rs.getTimestamp("posted_on"));
+                job.setJobStatus(rs.getString("status"));
+                job.setLastDate(rs.getTimestamp("last_date"));
+                job.setCompany(company);
+                job.setUser(user);
+
+                jobs.add(job);
+            }
+            return jobs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

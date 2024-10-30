@@ -43,6 +43,17 @@
             padding: 8px 5px;
             margin: 0 auto;
         }
+        .job-filters a{
+            display: inline-block;
+            background: #35424a;
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 50px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -72,10 +83,10 @@
                     </div>
                     <div class="profile-info">
                         <h3>${candidate.name}</h3>
-                        <p>Username: ${sessionScope.user.username}</p>
-                        <p>Email: ${sessionScope.user.email}</p>
-                        <p>Address:${candidate.address} </p>
-                        <p>Skills: ${candidate.skills}</p>
+                        <p><strong>Username:</strong>: ${sessionScope.user.username}</p>
+                        <p><strong>Email:</strong>: ${sessionScope.user.email}</p>
+                        <p><strong>Address:</strong>:${candidate.address} </p>
+                        <p><strong>Skills:</strong>: ${candidate.skills}</p>
                     </div>
                     <a href="${pageContext.request.contextPath}/candidate/candidate-profile" id="btn-edit-profile">Edit Profile</a>
                     <a href="${pageContext.request.contextPath}/logout" id="btn-logout">Logout</a>
@@ -127,6 +138,11 @@
                      </select>
                      <input type="submit" value="Search" class="search-btn btn btn-primary" id="btn-search">
                 </form>
+
+                <div class="job-filters">
+                    <a href="candidate-dashboard" class="text-white bg-primary">All</a>
+                    <a href="recent-jobs" class="text-white bg-secondary">Recent</a>
+                </div>
 
 
                 <div class="job-list" id="job-list">
