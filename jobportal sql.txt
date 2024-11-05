@@ -1,0 +1,94 @@
+create database jobportal;
+
+use jobportal;
+
+
+CREATE TABLE user(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(80) NOT NULL,
+    password VARCHAR(234) NOT NULL,
+    email VARCHAR(90) NOT NULL UNIQUE,
+    role VARCHAR(45) NOT NULL,
+    phone VARCHAR(45),
+    pic VARCHAR(233),
+    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(56) DEFAULT 'Active'
+);
+
+
+CREATE TABLE Company (
+    company_id INT AUTO_INCREMENT PRIMARY KEY,
+    employer_id INT,
+    company_name VARCHAR(255) NOT NULL,
+    company_address TEXT NOT NULL,
+    company_website VARCHAR(255),
+    company_email VARCHAR(255),
+    added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    company_size varchar(100),
+    founded_year varchar(123),
+    company_type varchar(214),
+    logo varchar(244),
+    FOREIGN KEY (employer_id) REFERENCES User(user_id)
+);
+
+CREATE TABLE Candidate(
+    candidate_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    name VARCHAR(234),
+    address VARCHAR(234),
+    education VARCHAR(234),
+    skills VARCHAR(234),
+    experience VARCHAR(234),
+    resume LONGBLOB,
+    bio text,
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+
+
+
+CREATE TABLE Job(
+    job_id INT AUTO_INCREMENT PRIMARY KEY,
+    company_id int,
+    employer_id INT,
+    job_title VARCHAR(255) NOT NULL,
+    job_description TEXT NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    salary DECIMAL(10,2),
+    job_type VARCHAR(255) NOT NULL,
+    posted_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(255) DEFAULT 'Open',
+    experience varchar(233),
+    requirements varchar(233),
+    responsibilities varchar(233),
+    benefits varchar(233),
+    vacancy varchar(233),
+    education_req varchar(45),
+    last_date varchar(244),
+    FOREIGN KEY (employer_id) REFERENCES User(user_id),
+    FOREIGN KEY (company_id) REFERENCES Company(company_id)
+);
+
+
+
+CREATE TABLE savedjob(
+    saved_job_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id int,
+    job_id INT,
+    isFav VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (job_id) REFERENCES job(job_id)
+);
+
+
+CREATE TABLE Application (
+    application_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    job_id INT,
+    applied_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status  VARCHAR(255) default 'Applied',
+    feedback  VARCHAR(255),
+    resume LONGBLOB,
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (job_id) REFERENCES Job(job_id)  
+);

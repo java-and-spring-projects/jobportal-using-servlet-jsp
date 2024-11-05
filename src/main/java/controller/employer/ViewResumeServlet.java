@@ -25,7 +25,7 @@ public class ViewResumeServlet extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal", "root", "root");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal", "root", "hitesh123");
             PreparedStatement stmt = connection.prepareStatement("select * from application where application_id = ?");
             stmt.setInt(1, id);
             ResultSet rs=stmt.executeQuery();
